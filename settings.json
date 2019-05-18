@@ -1,0 +1,43 @@
+// SETTINGS FOR VS CODE
+// Place your settings in this file to overwrite the default settings
+{
+  "editor.renderIndentGuides": true,
+  "editor.renderWhitespace": "boundary",
+  "editor.renderControlCharacters": false,
+  "editor.rulers": [
+    80
+  ],
+  "editor.trimAutoWhitespace": false,
+  "editor.wordWrap": "on",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.associations": {
+    ".gitignore": "shellscript"
+  },
+  "emmet.syntaxProfiles": {
+    "javascript": "jsx"
+  },
+  "window.title": "${activeEditorMedium}${separator}${rootName}",
+  "window.zoomLevel": 1,
+  "atomKeymap.promptV3Features": true,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.formatOnPaste": true,
+  "workbench.startupEditor": "newUntitledFile",
+  "editor.minimap.enabled": false,
+  "editor.tabSize": 2,
+  "workbench.sideBar.location": "left",
+  "workbench.colorTheme": "Material Theme",
+  "debug.node.autoAttach": "on",
+  "window.reopenFolders": "all",
+  "explorer.confirmDragAndDrop": false,
+  "terminal.external.osxExec": "iTerm.app",
+  "breadcrumbs.enabled": true,
+  "materialTheme.accent": "Remove accents",
+  "workbench.colorCustomizations": {},
+  "zenMode.hideLineNumbers": false,
+  "terminal.integrated.confirmOnExit": true,
+  "zenMode.restore": true,
+  "window.restoreFullscreen": true,
+  "editor.detectIndentation": false,
+  "python.dataScience.sendSelectionToInteractiveWindow": true
+}
