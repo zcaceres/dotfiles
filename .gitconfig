@@ -1,9 +1,0 @@
-[alias]
-        st = status
-        br = branch
-        aa = add -A
-        di = diff
-[core]
-        excludesfile = ~/.gitignore_global
-[credential]
-        helper = osxkeychain

@@ -1,3 +1,3 @@
-# dotfiles
+# dot dot dotfiles!
 
-Configs and setup.
+Tools, configs, and setup.

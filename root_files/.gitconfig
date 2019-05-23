@@ -1,0 +1,13 @@
+[user]
+	name = zc
+	email = zachcaceres@gmail.com
+[alias]
+	st = status
+	br = branch
+	aa = add -A
+	di = diff
+	co = checkout
+[core]
+	excludesfile = ~/.gitignore_global
+[credential]
+	helper = osxkeychain
