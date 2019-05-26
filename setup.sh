@@ -1,4 +1,6 @@
-#! /bin/bash
+#! /usr/bin/env bash
+set -euxo pipefail
+
 EXTENSIONS_PATH="./vs-code-extensions.sh"
 
 # Brew install tools and binaries w/cask
