@@ -3,11 +3,11 @@ EXTENSIONS_PATH="./vs-code-extensions.sh"
 
 # Brew install tools and binaries w/cask
 brew update
-brew install hub node nvm redis hugo yarn ffmpeg parallel ack
+brew install hub node nvm redis hugo npm yarn ffmpeg parallel ack
 brew cask install anaconda rescuetime private-internet-access cloudapp postico postgres flux postman visual-studio-code obs anki skype slack notion hyper steam docker kindle spotify google-chrome firefox trello unity
 
-# NPM install some global tools
-npm install -g nodemon serverless ngrok carbon-now
+# yarn install some global tools
+yarn global nodemon serverless ngrok carbon-now
 
 # XCode install
 xcode-select --install
