@@ -3,16 +3,17 @@ set -euxo pipefail
 
 EXTENSIONS_PATH="./vs-code-extensions.sh"
 
-# Brew install tools and binaries w/cask
-brew update
-brew install hub node nvm redis hugo yarn ffmpeg parallel ack
-brew cask install anaconda rescuetime private-internet-access cloudapp postico postgres flux postman visual-studio-code obs anki skype slack notion hyper steam docker kindle spotify google-chrome firefox trello unity noun-project brave-browser
-
-# yarn install some global tools
-yarn global add nodemon serverless ngrok carbon-now-cli create-react-app sequelize serverless serve browser-sync gcloud
-
 # XCode install
 xcode-select --install
+
+# Brew install tools and binaries w/cask
+brew update
+
+# Install from Brewfile
+brew bundle
+
+# yarn install some global tools
+yarn global add nodemon serverless carbon-now-cli create-react-app sequelize serverless serve browser-sync gcloud
 
 # Move all config files to home
 for filename in ./root_files; do
