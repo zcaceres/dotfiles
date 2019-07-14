@@ -1,12 +1,12 @@
 [user]
-        name = zc
-        email = zachcaceres@gmail.com
+  name = zc
+  email = zachcaceres@gmail.com
 [alias]
-        st = status
-        br = branch
-        aa = add -A
-        di = diff
-        co = checkout
+  st = status
+  br = branch
+  aa = add -A
+  di = diff
+  co = checkout
 
 [credential]
-        helper = cache --timeout=3600
+  helper = cache --timeout=3600
