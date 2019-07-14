@@ -1,5 +1,6 @@
 brew 'hub'
 brew 'python3'
+brew 'awscli'
 brew 'npm'
 brew 'nvm'
 brew 'redis'
@@ -12,6 +13,8 @@ brew 'ack'
 brew 'mas'
 
 mas 'TweetDeck', id: 485812721
+mas 'Trello, id: 1278508951
+mas 'Kindle' id: 405399194
 
 cask 'anaconda'
 cask 'rescuetime'

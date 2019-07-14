@@ -17,67 +17,69 @@ defaults write com.apple.finder AppleShowAllFiles YES
 defaults write com.apple.finder ShowPathbar -bool true
 ```
 
-Log in to App Store before continuing.
+Log in to the Mac App Store before continuing.
 
 ### List of Tools
 Some of these tools are installed from Homebrew. Those that aren't available on Homebrew are installed as global packages via yarn.
 
 `brew` installed:
-1. hub: GitHub from the command line
-2. nvm: Version manager for NodeJS
-3. npm: Package manager for NodeJS
-3. yarn: ...also a package manager for NodeJs
-4. python3: for Deep Learning, of course!
-5. redis: for doing local development with redis
-6. hugo: static site generator
-7. ffmpeg: working with audio/video on the command line
-8. parallel: awesome tool for parallelizing workflows
-9. ack: like grep, but better
-10. mas: Install apps from the App Store from the command line
-11. [wget](https://www.gnu.org/software/wget/): GNU tool for fetching files online
+  - [hub](https://hub.github.com/): GitHub from the command line
+  - [nvm](https://github.com/nvm-sh/nvm): Version manager for NodeJS
+  - [npm](https://www.npmjs.com/): Package manager for NodeJS
+  - [yarn](https://yarnpkg.com/en/): ...also a package manager for NodeJs
+  - [python3](https://www.python.org/): for Deep Learning, of course!
+  - [redis](https://redis.io/topics/rediscli): for doing local development with Redis
+  - [hugo](https://gohugo.io/): static site generator
+  - [ffmpeg](https://ffmpeg.org): working with audio/video on the command line
+  - [parallel](https://www.gnu.org/software/parallel/): awesome tool for parallelizing workflows
+  - [ack](https://beyondgrep.com/): like grep, but better
+  - [mas](https://github.com/mas-cli/mas): Install apps from the App Store from the command line
+  - [wget](https://www.gnu.org/software/wget/): GNU tool for fetching files online
+  - [awscli](https://github.com/aws/aws-cli): Amazon Web Services CLI
 
-Yarn installed.
-1. nodemon: long-running process manager for Node
-2. serverless: CLI for working with Serverless
-3. carbon-now-cli: awesome screenshots of code from the command line
-4. create-react-app: boilerplate generator for React projects
-5. [sequelize](https://docs.sequelizejs.com): Node.js ORM for PostgreSQL, MySQL, SQLite and MSSQL
-6. serve: start a simple server from the command line
-7. browser-sync: synchronized cross-browser testing
-8. gcloud: Google Cloud CLI
+`yarn` installed:
+  - [nodemon](https://nodemon.io/): long-running process manager for Node
+  - [serverless](https://serverless.com/framework/docs/providers/aws/cli-reference/): CLI for working with Serverless
+  - [carbon-now-cli](https://github.com/mixn/carbon-now-cli): awesome screenshots of code from the command line
+  - [create-react-app](https://github.com/facebook/create-react-app): boilerplate generator for React projects
+  - [sequelize](https://docs.sequelizejs.com): Node.js ORM for PostgreSQL, MySQL, SQLite and MSSQL
+  - [serve](https://www.npmjs.com/package/serve): start a simple server from the command line
+  - [browser-sync](https://browsersync.io/): synchronized cross-browser testing
+  - [gcloud](https://cloud.google.com/sdk/gcloud/): Google Cloud CLI
 
 ### List of Programs
-All programs installed via `brew cask`.
 
-1. anaconda: Python package manager and environment
-2. rescuetime: See how you're wasting time
-3. private-internet-access: My preferred VPN
-4. cloudapp: easily-shareable screenshots and screen caps
-5. postico: minimalist UI to manage your PG instance
-6. postgres: postgres desktop
-7. tweetdeck: Use Twitter from the desktop
-8. postman: test APIs
-9. Visual Studio Code: the best text editor
-10. obs: streaming app
-11. anki: flash card app
-12. skype: the classic calling app
-13. slack: communication app
-14. notion: preferred note-taking / todo app
-15. ngrok: easily make localhost public
-16. hyper: preferred terminal
-17. docker: container management
-18. discord: slack for nerds
-19. kindle: for reading
-20. spotify: for music
-21. Brave: browsing without being spied on
-22. Google Chrome: for web development
-23. Firefox: ...also for web development
-24. Trello: Because some teams use it
-25. Unity: Game development engine
-26. Noun Project: awesome icon library
-27. Steam: for when you're feeling unproductive
-28. Figma: for working with your design team :-)
+`brew cask` installed:
+  - [anaconda](https://www.anaconda.com/distribution/): Python package manager and environment
+  - [rescuetime](https://www.rescuetime.com/): See how you're wasting time
+  - [Private Internet Access](https://www.privateinternetaccess.com/): My preferred VPN
+  - [CloudApp](https://www.getcloudapp.com/): easily-shareable screenshots and screen caps
+  - [Postico](https://eggerapps.at/postico/): minimalist UI to manage your PG instance
+  - [Postgres](https://www.postgresql.org/): postgres desktop
+  - [Postman](https://www.getpostman.com): test APIs
+  - [Visual Studio Code](https://code.visualstudio.com/): the best text editor
+  - [OBS](https://obsproject.com/): streaming app
+  - [Anki](https://apps.ankiweb.net/): flash card app
+  - [Skype](https://www.skype.com/en/): the classic calling app
+  - [Notion](https://www.notion.so/): preferred note-taking / todo app
+  - [ngrok](https://ngrok.com/): easily make localhost public
+  - [hyper](https://hyper.is/): preferred terminal
+  - [Docker](https://www.docker.com/products/docker-desktop): container management
+  - [Discord](https://discordapp.com/store): for off-Slack communities
+  - Spotify: for music
+  - Google Chrome: for web development
+  - Firefox: ...also for web development
+  - Slack: communication app
+  - [Unity](https://unity.com/): Game development engine
+  - [Brave](https://brave.com/): browsing without being spied on
+  - [Noun Project](https://thenounproject.com/): awesome icon library
+  - [Steam](https://store.steampowered.com/): for when you're feeling unproductive
+  - [Figma](https://www.figma.com/): for working with your design team!
 
+`mas` installed:
+  - [TweetDeck](https://tweetdeck.twitter.com/): Use Twitter from the desktop
+  - Trello: Project management for teams
+  - Kindle: for reading
 
 ### Config Files
 
