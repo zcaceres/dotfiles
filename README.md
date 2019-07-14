@@ -82,6 +82,14 @@ Some of these tools are installed from Homebrew. Those that aren't available on 
   - Kindle: for reading
 
 ### Config Files
+Config files are all written to HOME using these lines of the setup script:
+
+```bash
+for filename in ./root_files; do
+    [ -e "$filename" ] || continue
+    cp ./root_files/"$filename" ~/"$filename"
+done
+```
 
 ### VSCode
 My [preferred settings](./setup/settings.json)
