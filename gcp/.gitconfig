@@ -7,6 +7,6 @@
   aa = add -A
   di = diff
   co = checkout
-
+  cob = checkout -b
 [credential]
   helper = cache --timeout=3600

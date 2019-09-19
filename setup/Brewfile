@@ -19,6 +19,7 @@ mas 'Kindle' id: 405399194
 cask 'anaconda'
 cask 'rescuetime'
 cask 'private-internet-access'
+cask 'dynamodb-local'
 cask 'cloudapp'
 cask 'figma'
 cask 'postico'
