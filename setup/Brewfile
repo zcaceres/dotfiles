@@ -11,6 +11,8 @@ brew 'wget'
 brew 'parallel'
 brew 'ack'
 brew 'mas'
+brew 'cowsay'
+brew 'mosh'
 
 mas 'TweetDeck', id: 485812721
 mas 'Trello, id: 1278508951
