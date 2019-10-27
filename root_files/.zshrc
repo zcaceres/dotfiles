@@ -100,6 +100,13 @@ source $ZSH/oh-my-zsh.sh
 
 alias ls="ls -1"
 alias ssh="echo 'You should consider using mosh instead' && ssh"
+alias gf='git flow'
+alias doc='docker-compose'
+alias dockerclean='docker system prune -f & docker volume prune -f'
+alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
+
+plugins=(git osx brew cask colored-man-pages docker-compose docker yarn python man jsontools aws node npm nvm)
+
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
