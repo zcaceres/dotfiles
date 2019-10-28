@@ -13,6 +13,7 @@ brew 'ack'
 brew 'mas'
 brew 'cowsay'
 brew 'mosh'
+brew 'jq'
 
 mas 'TweetDeck', id: 485812721
 mas 'Trello, id: 1278508951
