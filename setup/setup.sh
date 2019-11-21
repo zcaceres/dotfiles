@@ -12,7 +12,7 @@ brew update
 brew bundle
 
 # yarn install some global tools
-yarn global add nodemon serverless carbon-now-cli create-react-app sequelize serverless serve browser-sync gcloud netlify-cli eslint
+yarn global add nodemon serverless carbon-now-cli create-react-app sequelize serverless serve browser-sync gcloud netlify-cli eslint tldr
 
 # Install latest NodeJS
 nvm install node
