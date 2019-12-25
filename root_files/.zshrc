@@ -98,15 +98,16 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh
 
-alias ls="ls -1"
+alias ll="ls -1aG"
 alias ssh="echo 'You should consider using mosh instead' && ssh"
-alias gf='git flow'
-alias doc='docker-compose'
-alias dockerclean='docker system prune -f & docker volume prune -f'
-alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
+alias yarn-update="curl --compressed -o- -L https://yarnpkg.com/install.sh | bash"
+alias man="echo 'You should consider using tldr instead' && man"
 
-plugins=(git osx brew cask colored-man-pages docker-compose docker yarn python man jsontools aws node npm nvm)
+# Prevents recursive chmod changes
+alias chmod="chmod --preserve-root"
 
+# GOPATH binaries for convenience
+export PATH=$PATH:$(go env GOPATH)/bin
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
