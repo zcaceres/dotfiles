@@ -27,4 +27,6 @@ done
 # install VS Code extensions bundle
 bash "$EXTENSIONS_PATH"
 
+# disables lifecycle scripts on npm install to decrease likelihood of malicious activity when a new package is installed
+npm config set ignore-scripts true
 
