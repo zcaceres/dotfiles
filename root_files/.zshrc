@@ -103,10 +103,6 @@ alias ssh="echo 'You should consider using mosh instead' && ssh"
 alias yarn-update="curl --compressed -o- -L https://yarnpkg.com/install.sh | bash"
 alias man="echo 'You should consider using tldr instead' && man"
 
-# Prevents recursive chmod and chown changes
-alias chmod="chmod --preserve-root"
-alias chown="chown --preserve-root"
-
 # GOPATH binaries for convenience
 export PATH=$PATH:$(go env GOPATH)/bin
 
