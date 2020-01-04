@@ -98,10 +98,16 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh
 
+# Bash Aliases
 alias ll="ls -1aG"
 alias ssh="echo 'You should consider using mosh instead' && ssh"
 alias yarn-update="curl --compressed -o- -L https://yarnpkg.com/install.sh | bash"
 alias man="echo 'You should consider using tldr instead' && man"
+alias gf='git flow'
+alias doc='docker-compose'
+alias dockerclean='docker system prune -f & docker volume prune -f'
+alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
+alias sourceme='. ~/.bash_profile'
 
 # GOPATH binaries for convenience
 export PATH=$PATH:$(go env GOPATH)/bin

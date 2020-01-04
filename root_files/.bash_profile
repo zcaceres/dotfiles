@@ -12,13 +12,6 @@ export CLICOLOR=1
 export PATH="$HOME/.yarn/bin:$PATH"
 export PATH="/usr/local/opt/redis@3.2/bin:$PATH"
 
-# Bash Aliases
-alias gf='git flow'
-alias doc='docker-compose'
-alias dockerclean='docker system prune -f & docker volume prune -f'
-alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
-alias sourceme='. ~/.bash_profile'
-
 # added by Miniconda3 installer
 export PATH="/Users/zachcaceres/miniconda3/bin:$PATH"
 # added by Anaconda3 5.3.0 installer
