@@ -1,3 +1,55 @@
+prompt_git() {
+	local s='';
+	local branchName='';
+
+	# Check if the current directory is in a Git repository.
+	if [ $(git rev-parse --is-inside-work-tree &>/dev/null; echo "${?}") == '0' ]; then
+
+		# check if the current directory is in .git before running git checks
+		if [ "$(git rev-parse --is-inside-git-dir 2> /dev/null)" == 'false' ]; then
+
+			# Ensure the index is up to date.
+			git update-index --really-refresh -q &>/dev/null;
+
+			# Check for uncommitted changes in the index.
+			if ! $(git diff --quiet --ignore-submodules --cached); then
+				s+='+';
+			fi;
+
+			# Check for unstaged changes.
+			if ! $(git diff-files --quiet --ignore-submodules --); then
+				s+='!';
+			fi;
+
+			# Check for untracked files.
+			if [ -n "$(git ls-files --others --exclude-standard)" ]; then
+				s+='?';
+			fi;
+
+			# Check for stashed files.
+			if $(git rev-parse --verify refs/stash &>/dev/null); then
+				s+='$';
+			fi;
+
+		fi;
+
+		# Get the short symbolic ref.
+		# If HEAD isn’t a symbolic ref, get the short SHA for the latest commit
+		# Otherwise, just give up.
+		branchName="$(git symbolic-ref --quiet --short HEAD 2> /dev/null || \
+			git rev-parse --short HEAD 2> /dev/null || \
+			echo '(unknown)')";
+
+		[ -n "${s}" ] && s=" [${s}]";
+
+		echo -e "${1}${branchName}${2}${s}";
+	else
+		return;
+	fi;
+}
+
+
+
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
 
@@ -31,11 +83,43 @@ fi
 unset __conda_setup
 # <<< conda init <<<
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/zachcaceres/google-cloud-sdk/path.bash.inc' ]; then . '/Users/zachcaceres/google-cloud-sdk/path.bash.inc'; fi
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash
+#!/usr/bin/env bash
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/zachcaceres/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/zachcaceres/google-cloud-sdk/completion.bash.inc'; fi
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[ -f /Users/zachcaceres/.nvm/versions/node/v8.11.1/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.bash ] && . /Users/zachcaceres/.nvm/versions/node/v8.11.1/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.bash
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/zachcaceres/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/zachcaceres/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/zachcaceres/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/zachcaceres/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /Users/zachcaceres/.config/yarn/global/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/zachcaceres/.config/yarn/global/node_modules/tabtab/.completions/slss.zsh
+
+# Bash Aliases
+alias ll="ls -1aG"
+alias ssh="echo 'You should consider using mosh instead' && ssh"
+alias yarn-update="curl --compressed -o- -L https://yarnpkg.com/install.sh | bash"
+alias man="echo 'You should consider using tldr instead' && man"
+alias gf='git flow'
+alias doc='docker-compose'
+alias dockerclean='docker system prune -f & docker volume prune -f'
+alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
+alias sourceme='. ~/.bash_profile'
+
+# GOPATH binaries for convenience
+export PATH=$PATH:$(go env GOPATH)/bin
+
+export PATH="/usr/local/sbin:$PATH"
 
 [[ -s ~/.bashrc ]] && source ~/.bashrc
-export PATH="/usr/local/sbin:$PATH"
+[[ -s ~/.zshrc ]] && source ~/.zshrc
