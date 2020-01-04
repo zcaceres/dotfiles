@@ -83,28 +83,6 @@ fi
 unset __conda_setup
 # <<< conda init <<<
 
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash
-#!/usr/bin/env bash
-
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[ -f /Users/zachcaceres/.nvm/versions/node/v8.11.1/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.bash ] && . /Users/zachcaceres/.nvm/versions/node/v8.11.1/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.bash
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /Users/zachcaceres/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/zachcaceres/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /Users/zachcaceres/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/zachcaceres/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f /Users/zachcaceres/.config/yarn/global/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/zachcaceres/.config/yarn/global/node_modules/tabtab/.completions/slss.zsh
-
 # Bash Aliases
 alias ll="ls -1aG"
 alias ssh="echo 'You should consider using mosh instead' && ssh"
