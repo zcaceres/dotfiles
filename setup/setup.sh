@@ -1,6 +1,7 @@
 #! /usr/bin/env bash
 set -euxo pipefail
-EXTENSIONS_PATH="./vs-code-extensions.sh"
+VS_CODE_EXTENSIONS_PATH="../vscode/vs-code-extensions.sh"
+VS_CODE_SETTINGS_PATH="~/Library/Application Support/Code/User/settings.json"
 
 # XCode install
 xcode-select --install
@@ -19,13 +20,15 @@ nvm install node
 nvm use node
 
 # Move all config 'root' files to HOME
-for filename in ./root_files; do
+for filename in ../config; do
     [ -e "$filename" ] || continue
-    cp ./root_files/"$filename" ~/"$filename"
+    cp ../config/"$filename" ~/"$filename"
 done
 
-# install VS Code extensions bundle
-bash "$EXTENSIONS_PATH"
+# VS Code
+# install extensions bundle
+bash "$VS_CODE_EXTENSIONS_PATH"
+cp ../vscode/settings.json "$VS_CODE_SETTINGS_PATH"
 
 # disables lifecycle scripts on npm install to decrease likelihood of malicious activity when a new package is installed
 npm config set ignore-scripts true

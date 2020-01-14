@@ -91,7 +91,7 @@ Included in this is the setup for `go` `python3` and `NodeJS`.
   - Kindle: for reading
 
 ### Config Files
-Config files are all written to HOME automatically in `setup.sh`.
+Config files are copied automatically in `setup.sh`. Check there for details.
 
 ### VSCode
 My [preferred settings](./vscode/settings.json)
