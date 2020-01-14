@@ -11,11 +11,7 @@ Security and Privacy > General > Require password immediately after sleep or scr
 Security and Privacy > Firewall > On
 Security and Privacy > Privacy > Accessibility > Allow control for Dropbox, Steam, Rescuetime
 
-```sh
-chflags nohidden ~/Library
-defaults write com.apple.finder AppleShowAllFiles YES
-defaults write com.apple.finder ShowPathbar -bool true
-```
+(Some defaults are also in `setup.sh`).
 
 Log in to the Mac App Store before continuing.
 

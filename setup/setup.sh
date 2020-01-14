@@ -3,6 +3,11 @@ set -euxo pipefail
 VS_CODE_EXTENSIONS_PATH="../vscode/vs-code-extensions.sh"
 VS_CODE_SETTINGS_PATH="~/Library/Application Support/Code/User/settings.json"
 
+# OSX defaults
+chflags nohidden ~/Library
+defaults write com.apple.finder AppleShowAllFiles YES
+defaults write com.apple.finder ShowPathbar -bool true
+
 # XCode install
 xcode-select --install
 
