@@ -1,3 +1,4 @@
+// Place your settings in this file to overwrite the default settings
 {
   "editor.renderIndentGuides": true,
   "editor.renderWhitespace": "boundary",
@@ -37,5 +38,19 @@
   "zenMode.restore": true,
   "window.restoreFullscreen": true,
   "editor.detectIndentation": false,
-  "python.dataScience.sendSelectionToInteractiveWindow": true
+  "python.dataScience.sendSelectionToInteractiveWindow": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "HookyQR.beautify"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "gitlens.hovers.currentLine.over": "line",
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "diffEditor.ignoreTrimWhitespace": true,
+  "[markdown]": {},
+  "editor.snippetSuggestions": "top",
+  "editor.tabCompletion": "onlySnippets"
 }

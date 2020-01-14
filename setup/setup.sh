@@ -18,7 +18,7 @@ yarn global add nodemon serverless carbon-now-cli create-react-app sequelize ser
 nvm install node
 nvm use node
 
-# Move all config files to home
+# Move all config 'root' files to HOME
 for filename in ./root_files; do
     [ -e "$filename" ] || continue
     cp ./root_files/"$filename" ~/"$filename"

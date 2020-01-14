@@ -1,7 +1,7 @@
 # Setting Up a New Macbook for Development
 Tools, configs, and setup.
 
-Last updated for: Mojave (10.14.5)
+Last updated for: Catalina (10.15.2)
 
 ### OSX Settings
 > Good defaults borrowed from [https://github.com/taniarascia/mac](https://github.com/taniarascia/mac)
@@ -22,9 +22,18 @@ Log in to the Mac App Store before continuing.
 ### List of Tools
 Some of these tools are installed from Homebrew. Those that aren't available on Homebrew are installed as global packages via yarn.
 
+Included in this is the setup for `go` `python3` and `NodeJS`.
+
 `brew` installed:
   - [hub](https://hub.github.com/): GitHub from the command line
+  - python3
   - [nvm](https://github.com/nvm-sh/nvm): Version manager for NodeJS
+  - youtube-dl: download youtube videos from the command line
+  - go: the language
+  - mosh: nicer SSH
+  - cowsay: the legend
+  - jq: use JSON in bash
+  - dep: package management for Go
   - [npm](https://www.npmjs.com/): Package manager for NodeJS
   - [yarn](https://yarnpkg.com/en/): ...also a package manager for NodeJs
   - [python3](https://www.python.org/): for Deep Learning, of course!
@@ -62,8 +71,9 @@ Some of these tools are installed from Homebrew. Those that aren't available on 
   - [Anki](https://apps.ankiweb.net/): flash card app
   - [Skype](https://www.skype.com/en/): the classic calling app
   - [Notion](https://www.notion.so/): preferred note-taking / todo app
-  - [ngrok](https://ngrok.com/): easily make localhost public
-  - [hyper](https://hyper.is/): preferred terminal
+  - [ngrok](https://ngrok.com/): turn localhost into a public webserver
+  - [hyper](https://hyper.is/): terminal built with web tech (mostly for fun)
+  - iterm2: preferred terminal
   - [Docker](https://www.docker.com/products/docker-desktop): container management
   - [Discord](https://discordapp.com/store): for off-Slack communities
   - Spotify: for music
@@ -72,27 +82,19 @@ Some of these tools are installed from Homebrew. Those that aren't available on 
   - Slack: communication app
   - [Unity](https://unity.com/): Game development engine
   - [Brave](https://brave.com/): browsing without being spied on
-  - [Noun Project](https://thenounproject.com/): awesome icon library
   - [Steam](https://store.steampowered.com/): for when you're feeling unproductive
-  - [Figma](https://www.figma.com/): for working with your design team!
+  - [Figma](https://www.figma.com/): for working with your design team
+  - Adobe Creative Cloud: to design with XD
 
 `mas` installed:
   - [TweetDeck](https://tweetdeck.twitter.com/): Use Twitter from the desktop
-  - Trello: Project management for teams
   - Kindle: for reading
 
 ### Config Files
-Config files are all written to HOME using these lines of the setup script:
-
-```bash
-for filename in ./root_files; do
-    [ -e "$filename" ] || continue
-    cp ./root_files/"$filename" ~/"$filename"
-done
-```
+Config files are all written to HOME automatically in `setup.sh`.
 
 ### VSCode
-My [preferred settings](./setup/settings.json)
+My [preferred settings](./vscode/settings.json)
 
-My [preferred extensions](./setup/vs-code-extensions.sh)
+My [preferred extensions](./vscode/vs-code-extensions.sh)
 

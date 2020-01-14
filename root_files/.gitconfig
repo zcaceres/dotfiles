@@ -1,6 +1,6 @@
 [user]
-  name = zc
-  email = zachcaceres@gmail.com
+  name = FILL ME OUT
+  email = FILL ME OUT
 [alias]
   st = status
   br = branch
@@ -12,3 +12,4 @@
   excludesfile = ~/.gitignore_global
 [credential]
   helper = osxkeychain
+  helper = cache --timeout=3600
