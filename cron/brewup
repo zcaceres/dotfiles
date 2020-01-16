@@ -1,0 +1,2 @@
+# run brewup at 10am each day
+0 10 * * * brewup
