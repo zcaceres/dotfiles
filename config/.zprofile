@@ -99,7 +99,7 @@ alias man="echo 'You should consider using tldr instead' && man"
 alias gf='git flow'
 alias doc='docker-compose'
 alias dockerclean='docker system prune -f & docker volume prune -f'
-alias brewup='brew update; brew upgrade; brew cleanup; brew doctor; softwareupdate -l'
+alias brewup='softwareupdate -l & tldr --update & brew update; brew upgrade; brew cleanup; brew doctor'
 alias sourceme='. ~/.zprofile'
 
 export PATH="/usr/local/sbin:$PATH"
