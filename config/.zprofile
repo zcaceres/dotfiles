@@ -99,7 +99,8 @@ alias man="echo 'You should consider using tldr instead' && man"
 alias gf='git flow'
 alias doc='docker-compose'
 alias dockerclean='docker system prune -f & docker volume prune -f'
-alias brewup='npm update -g & yarn global upgrade & pip install --upgrade pip; pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U & softwareupdate -l & tldr --update & brew update; brew upgrade; brew cleanup; brew doctor;'
+alias brewup='npm update -g & yarn global upgrade & softwareupdate -l & tldr --update & brew update; brew upgrade; brew cleanup; brew doctor;'
+alias pythonup='pip install --upgrade pip; pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U'
 alias sourceme='. ~/.zprofile'
 
 export PATH="/usr/local/sbin:$PATH"
