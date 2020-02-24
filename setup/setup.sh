@@ -38,3 +38,5 @@ cp ../vscode/settings.json "$VS_CODE_SETTINGS_PATH"
 # disables lifecycle scripts on npm install to decrease likelihood of malicious activity when a new package is installed
 npm config set ignore-scripts true
 
+# csv command line utility
+pip install csvkit
