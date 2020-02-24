@@ -52,5 +52,6 @@
   "diffEditor.ignoreTrimWhitespace": true,
   "[markdown]": {},
   "editor.snippetSuggestions": "top",
-  "editor.tabCompletion": "onlySnippets"
+  "editor.tabCompletion": "onlySnippets",
+  "editor.fontFamily": "'JetBrains Mono', Menlo, Monaco, 'Courier New', monospace"
 }
