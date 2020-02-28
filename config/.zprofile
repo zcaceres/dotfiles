@@ -95,14 +95,17 @@ export PATH="/usr/local/sbin:$PATH"
 alias ll="ls -1a"
 alias ssh="echo 'You should consider using mosh instead' && ssh"
 alias yarn-update="curl --compressed -o- -L https://yarnpkg.com/install.sh | bash"
-alias man="echo 'You should consider using tldr instead' && man"
+alias man="echo 'You should consider using tldr instead' && man $1"
 alias gf='git flow'
 alias doc='docker-compose'
 alias dockerclean='docker system prune -f & docker volume prune -f'
 alias brewup='npm update -g & yarn global upgrade & softwareupdate -l & tldr --update & brew update; brew upgrade; brew cleanup; brew doctor;'
 alias pythonup='pip install --upgrade pip; pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U'
 alias sourceme='. ~/.zprofile'
+# serve current directory on port 80
+alias servedir='python -m http.server 8080'
 
+export NPM_TOKEN='ae81c50d-9612-4bba-afe0-d468f2c5235f'
 export PATH="/usr/local/sbin:$PATH"
 
 export PATH="$HOME/.cargo/bin:$PATH"
