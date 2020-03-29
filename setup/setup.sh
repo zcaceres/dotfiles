@@ -40,3 +40,4 @@ npm config set ignore-scripts true
 
 # csv command line utility
 pip install csvkit
+pip install kaggle
