@@ -23,6 +23,7 @@ brew 'nmap'
 brew 'iftop'
 brew 'mosh'
 brew 'jq'
+brew 'telnet'
 brew 'youtube-dl'
 brew 'watch'
 
