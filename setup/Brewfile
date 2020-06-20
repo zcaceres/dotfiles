@@ -31,7 +31,6 @@ brew 'telnet'
 brew 'youtube-dl'
 brew 'watch'
 
-mas 'Kindle' id: 405399194
 mas 'TweetDeck', id: 485812721
 
 cask 'adobe-creative-cloud'
