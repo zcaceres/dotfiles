@@ -41,3 +41,4 @@ npm config set ignore-scripts true
 # csv command line utility
 pip install csvkit
 pip install kaggle
+conda install -c conda-forge notebook jupyter
