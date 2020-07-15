@@ -31,8 +31,6 @@ brew 'telnet'
 brew 'youtube-dl'
 brew 'watch'
 
-mas 'TweetDeck', id: 485812721
-
 cask 'adobe-creative-cloud'
 cask 'anki'
 cask 'anaconda'
