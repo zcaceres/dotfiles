@@ -9,6 +9,7 @@ brew 'go'
 
 brew 'awscli'
 brew 'ack'
+brew 'Rigellute/tap/spotify-tui'
 brew 'hub'
 brew 'redis'
 brew 'ffmpeg'
