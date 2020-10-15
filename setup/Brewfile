@@ -29,6 +29,7 @@ brew 'mosh'
 brew 'pandoc'
 brew 'jq'
 brew 'telnet'
+brew 'shellcheck'
 brew 'youtube-dl'
 brew 'watch'
 
