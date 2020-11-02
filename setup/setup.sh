@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 set -euxo pipefail
-VS_CODE_EXTENSIONS_PATH="../.vscode/vs-code-extensions.sh"
+VS_CODE_EXTENSIONS_PATH="../vscode/vs-code-extensions.sh"
 VS_CODE_SETTINGS_PATH="~/Library/Application Support/Code/User/settings.json"
 
 # OSX defaults
@@ -15,7 +15,7 @@ xcode-select --install
 brew update
 
 # Install from Brewfile
-brew bundle
+brew bundle &
 
 # yarn install some global tools
 yarn global add nodemon serverless carbon-now-cli create-react-app sequelize serverless serve browser-sync gcloud netlify-cli eslint tldr puppeteer gatsby-cl parcel-bundler typescript expo-cli tsc
@@ -25,9 +25,9 @@ nvm install node
 nvm use node
 
 # Move all config 'root' files to HOME
-for filename in ../config; do
+for filename in ../config/*; do
     [ -e "$filename" ] || continue
-    cp ../config/"$filename" ~/"$filename"
+    cp "$filename" ~/"$filename"
 done
 
 # VS Code

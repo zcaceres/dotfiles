@@ -32,6 +32,7 @@ brew 'telnet'
 brew 'shellcheck'
 brew 'youtube-dl'
 brew 'watch'
+brew 'zsh'
 
 cask 'adobe-creative-cloud'
 cask 'anki'
