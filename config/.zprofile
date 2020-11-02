@@ -48,47 +48,6 @@ prompt_git() {
 	fi;
 }
 
-
-
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
-
-export PYTHONPATH="~/Library/Python/3.6/bin"
-
-# Setting PATH for Python 3.6
-# The original version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
-export PATH
-export CLICOLOR=1
-
-export PATH="$HOME/.yarn/bin:$PATH"
-export PATH="/usr/local/opt/redis@3.2/bin:$PATH"
-
-# added by Miniconda3 installer
-export PATH="/Users/zachcaceres/miniconda3/bin:$PATH"
-# added by Anaconda3 5.3.0 installer
-# >>> conda init >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$(CONDA_REPORT_ERRORS=false '/Users/zachcaceres/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    \eval "$__conda_setup"
-else
-    if [ -f "/Users/zachcaceres/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/zachcaceres/anaconda3/etc/profile.d/conda.sh"
-        CONDA_CHANGEPS1=false conda activate base
-    else
-        \export PATH="/Users/zachcaceres/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda init <<<
-
-# GOPATH binaries for convenience
-export PATH=$PATH:$(go env GOPATH)/bin
-
-export PATH="/usr/local/sbin:$PATH"
-
-[[ -s ~/.bashrc ]] && source ~/.bashrc
 [[ -s ~/.zshrc ]] && source ~/.zshrc
 
 # Aliases
@@ -104,8 +63,3 @@ alias pythonup='pip install --upgrade pip; pip list --outdated --format=freeze |
 alias sourceme='. ~/.zprofile'
 # serve current directory on port 80
 alias servedir='python -m http.server 8080'
-
-export NPM_TOKEN='ae81c50d-9612-4bba-afe0-d468f2c5235f'
-export PATH="/usr/local/sbin:$PATH"
-
-export PATH="$HOME/.cargo/bin:$PATH"
