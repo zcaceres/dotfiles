@@ -32,7 +32,7 @@ done
 
 # VS Code
 # install extensions bundle
-bash "$VS_CODE_EXTENSIONS_PATH"
+cat "$VS_CODE_EXTENSIONS_PATH" | xargs -I _ code --install-extension _
 cp ../vscode/settings.json "$VS_CODE_SETTINGS_PATH"
 
 # disables lifecycle scripts on npm install to decrease likelihood of malicious activity when a new package is installed
