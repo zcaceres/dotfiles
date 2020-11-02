@@ -25,10 +25,9 @@ nvm install node
 nvm use node
 
 # Move all config 'root' files to HOME
-for filename in ../config/*; do
-    [ -e "$filename" ] || continue
-    cp "$filename" ~/"$filename"
-done
+pushd ../config
+cp -r . ~/
+popd
 
 # VS Code
 # install extensions bundle
