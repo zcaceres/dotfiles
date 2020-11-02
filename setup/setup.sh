@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 set -euxo pipefail
-VS_CODE_EXTENSIONS_PATH="../vscode/vs-code-extensions.sh"
+VS_CODE_EXTENSIONS_PATH="../.vscode/vs-code-extensions.sh"
 VS_CODE_SETTINGS_PATH="~/Library/Application Support/Code/User/settings.json"
 
 # OSX defaults
