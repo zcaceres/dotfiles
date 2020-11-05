@@ -18,7 +18,20 @@ brew update
 brew bundle &
 
 # yarn install some global tools
-yarn global add nodemon serverless carbon-now-cli create-react-app sequelize serverless serve browser-sync gcloud netlify-cli eslint tldr puppeteer gatsby-cl parcel-bundler typescript expo-cli tsc
+yarn global add \
+serverless \
+carbon-now-cli \
+serve \
+browser- \
+gcloud \
+netlify-cli \
+sequelize \
+nodemon \
+create-react-app \
+serve \
+tldr \
+typescript \
+tsc
 
 # Install latest NodeJS
 nvm install node
