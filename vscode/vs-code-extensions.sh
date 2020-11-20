@@ -1,5 +1,6 @@
 EditorConfig.editorconfig
 abusaidm.html-snippets
+aaron-bond.better-comments
 akamud.vscode-theme-onedark
 austin.code-gnu-global
 awesomektvn.scratchpad
