@@ -6,6 +6,7 @@ brew 'yarn'
 
 brew 'dep'
 brew 'go'
+brew 'trash'
 
 brew 'awscli'
 brew 'ack'
