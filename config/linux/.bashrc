@@ -118,3 +118,8 @@ export NVM_DIR="$HOME/.config/nvm"
 
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
+alias c='clear'
+alias open='xdg-open'
+alias la='ls -la'
+alias ls='ls --color=auto'
+
