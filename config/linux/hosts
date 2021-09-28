@@ -1,0 +1,17 @@
+127.0.0.1	localhost
+::1		localhost ip6-localhost ip6-loopback
+ff02::1		ip6-allnodes
+ff02::2		ip6-allrouters
+
+127.0.1.1		raspberrypi
+
+# these block distracting websites by default
+0.0.0.0    facebook.com
+0.0.0.0    www.facebook.com
+::0        facebook.com
+::0        www.facebook.com
+
+0.0.0.0    twitter.com
+0.0.0.0    www.twitter.com
+::0        twitter.com
+::0        www.twitter.com

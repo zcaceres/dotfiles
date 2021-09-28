@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-apt install ack nodejs npm htop iftop tldr wget xsel trash-cli
+apt install ack nodejs npm htop iftop tldr wget xsel trash-cli zeal
 
 echo 'installing Rust'
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
