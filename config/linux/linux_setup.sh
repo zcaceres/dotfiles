@@ -14,6 +14,12 @@ export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+nvm install 16
+
+nvm use 16
+
+npm installl --global yarn
+
 echo 'Install VSCode: https://code.visualstudio.com/docs/setup/linux'
 
 echo 'Install PIA: https://www.privateinternetaccess.com/pages/changelog'
