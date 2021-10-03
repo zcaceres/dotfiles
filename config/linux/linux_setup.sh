@@ -23,3 +23,7 @@ npm installl --global yarn
 echo 'Install VSCode: https://code.visualstudio.com/docs/setup/linux'
 
 echo 'Install PIA: https://www.privateinternetaccess.com/pages/changelog'
+
+apt install bat
+echo 'If bat did not install, you must visit the release page and instal with
+dpkg: https://github.com/sharkdp/bat/releases
