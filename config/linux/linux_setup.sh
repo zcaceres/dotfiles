@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-apt install ack nodejs npm htop iftop tldr wget xsel trash-cli zeal apostrophe
+apt install ack nodejs npm htop iftop tldr wget xsel trash-cli zeal ghostwriter
 
 echo 'installing Rust'
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -28,10 +28,3 @@ apt install bat
 echo 'If bat did not install, you must visit the release page and instal with
 dpkg: https://github.com/sharkdp/bat/releases'
 
-
-echo 'Installing flatpak from flatpak.org'
-sudo apt install flatpak
-flatpak remote-add --if-not-exists flathub
- https://flathub.org/repo/flathub.flatpakrepo
-
-flatpak install flathub org.gnome.gitlab.somas.Apostrophe
