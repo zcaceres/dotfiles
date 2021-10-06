@@ -28,3 +28,6 @@ apt install bat
 echo 'If bat did not install, you must visit the release page and instal with
 dpkg: https://github.com/sharkdp/bat/releases'
 
+echo 'Installing typescript syntax for vim'
+git clone https://github.com/leafgarland/typescript-vim.git ~/.vim/pack/typescript/start/typescript-vim
+
