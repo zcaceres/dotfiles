@@ -1,7 +1,7 @@
 # Setting Up a New Macbook for Development
 Tools, configs, and setup.
 
-Last updated for: Catalina (10.15.2)
+Last updated for: Monterey (12.1)
 
 ### OSX Settings
 > Good defaults borrowed from [https://github.com/taniarascia/mac](https://github.com/taniarascia/mac)
