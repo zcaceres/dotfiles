@@ -1,0 +1,102 @@
+- name: Set OSX Defaults
+  shell: chflags nohidden ~/Library
+
+- name: Set Keyboard speed Defaults
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: InitialKeyRepeat
+    type: int
+    value: 15
+    state: present
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: KeyRepeat
+    type: int
+    value: 2
+    state: present
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: AppleShowAllFiles
+    type: string
+    value: YES
+    state: present
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowPathbar
+    type: bool
+    value: true
+    state: present
+  community.general.osx_defaults:
+    domain: com.apple.Safari
+    key: IncludeInternalDebugMenu
+    type: int
+    value: 1
+    state: present
+
+- name: Install XCode
+  shell: xcode-select --install
+  ignore_errors: yes
+
+- name: Install Rust
+  shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > /tmp/install_rust && /usr/bin/env bash /tmp/install_rust -y --no-modify-path && source $HOME/.cargo/env
+
+- name: Homebrew Install Tools
+  community.general.homebrew:
+    name: python3,npm,nvm,yarn,dep,go,trash,awscli,ack,Rigellute/tap/spotify-tui,hub,redis,ffmpeg,git-filter-repo,imageoptim-cli,imagemagick,wget,parallel,mas,cowsay,nmap,pdfgrep,aljohri/-/docx2pdf,ocrmypdf,iftop,htop,mosh,pandoc,jq,telnet,shellcheck,youtube-dl,watch,zsh,pipx
+    state: present
+
+- name: Install Yarn and Dependencies
+  community.general.yarn:
+    name: serverless
+    global: yes
+  community.general.yarn:
+    name: carbon-now-cli
+    global: yes
+  community.general.yarn:
+    name: serve
+    global: yes
+  community.general.yarn:
+    name: browser-sync
+    global: yes
+  community.general.yarn:
+    name: gcloud
+    global: yes
+  community.general.yarn:
+    name: netlify-cli
+    global: yes
+  community.general.yarn:
+    name: sequelize
+    global: yes
+  community.general.yarn:
+    name: nodemon
+    global: yes
+  community.general.yarn:
+    name: create-react-app
+    global: yes
+  community.general.yarn:
+    name: serve
+    global: yes
+  community.general.yarn:
+    name: tldr
+    global: yes
+  community.general.yarn:
+    name: typescript
+    global: yes
+  community.general.yarn:
+    name: tsc
+    global: yes
+
+- name: Install Node with NVM
+  shell: . $(brew --prefix nvm)/nvm.sh && nvm install node && nvm use node
+
+- name: Secure NPM
+  shell: npm config set ignore-scripts true
+
+- name: Install Homebrew - Apps
+  community.general.homebrew_cask:
+    name: anki,brave-browser,dash,discord,docker,sizzy,firefox,freedom,iterm2,imageoptim,kindle,notion,ngrok,obs,postman,private-internet-access,rescuetime,skype,slack,signal,steam,spotify,telegram,visual-studio-code,whatsapp
+    state: present
+  ignore_errors: yes 
+
+- name: Install Deep Learning Tools
+  shell: pip install csvkit kaggle jupyterlab

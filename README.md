@@ -55,17 +55,15 @@ Included in this is the setup for `go`, `python3`, and `nodejs`, my preferred la
 
 `brew cask` installed:
   - Adobe Creative Cloud: to design with XD
-  - [anaconda](https://www.anaconda.com/distribution/): Python package manager and environment
+  - [Anaconda](https://www.anaconda.com/distribution/): Python package manager and environment
   - [Anki](https://apps.ankiweb.net/): flash card app
   - Chrome: for web development
-  - [Brave](https://brave.com/): browsing without being spied on
-  - [CloudApp](https://www.getcloudapp.com/): easily-shareable screenshots and screen caps
+  - [Brave](https://brave.com/): browse without being spied on
   - [Discord](https://discordapp.com/store): for off-Slack communities
   - [Docker](https://www.docker.com/products/docker-desktop): container management
   - [Figma](https://www.figma.com/): for working with your design team
-  - iterm2: preferred terminal
+  - iTerm2: preferred terminal
   - Firefox: ...also for web development
-  - [hyper](https://hyper.is/): terminal built with web tech (mostly for fun)
   - [ngrok](https://ngrok.com/): turn localhost into a public webserver
   - [Notion](https://www.notion.so/): preferred note-taking / todo app
   - [OBS](https://obsproject.com/): streaming app
@@ -73,16 +71,13 @@ Included in this is the setup for `go`, `python3`, and `nodejs`, my preferred la
   - [Postico](https://eggerapps.at/postico/): minimalist UI to manage your PG instance
   - [Postgres](https://www.postgresql.org/): postgres desktop
   - [Postman](https://www.getpostman.com): test APIs
-  - [rescuetime](https://www.rescuetime.com/): See how you're wasting time
+  - [Rescuetime](https://www.rescuetime.com/): See how you're wasting time
   - [Skype](https://www.skype.com/en/): the classic calling app
   - Slack: communication app
   - Spotify: for music
   - [Steam](https://store.steampowered.com/): for when you're feeling unproductive
   - [Unity](https://unity.com/): Game development engine
   - [Visual Studio Code](https://code.visualstudio.com/): the best text editor
-
-`mas` installed:
-  - [TweetDeck](https://tweetdeck.twitter.com/): Use Twitter from the desktop
   - Kindle: for reading
 
 ### Config Files

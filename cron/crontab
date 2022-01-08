@@ -1,0 +1,4 @@
+# this will silence annoying 'mail' sent from crontab
+MAILTO=""
+
+0 9 * * * open /Applications/Lifedash.app
