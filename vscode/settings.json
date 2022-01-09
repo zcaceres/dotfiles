@@ -17,7 +17,6 @@
     "javascript": "jsx"
   },
   "window.title": "${activeEditorMedium}${separator}${rootName}",
-  "window.zoomLevel": 1,
   "atomKeymap.promptV3Features": true,
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.formatOnPaste": true,
@@ -25,22 +24,20 @@
   "editor.minimap.enabled": false,
   "editor.tabSize": 2,
   "workbench.sideBar.location": "left",
-  "workbench.colorTheme": "Material Theme",
-  "debug.node.autoAttach": "on",
+  "workbench.colorTheme": "Community Material Theme",
+  "debug.node.autoAttach": "off",
   "window.reopenFolders": "all",
   "explorer.confirmDragAndDrop": false,
   "terminal.external.osxExec": "iTerm.app",
   "breadcrumbs.enabled": true,
   "materialTheme.accent": "Remove accents",
   "workbench.colorCustomizations": {},
-  "zenMode.hideLineNumbers": false,
   "terminal.integrated.confirmOnExit": true,
   "zenMode.restore": true,
   "window.restoreFullscreen": true,
-  "editor.detectIndentation": false,
-  "python.dataScience.sendSelectionToInteractiveWindow": true,
+"editor.detectIndentation": false,
   "[javascript]": {
-    "editor.defaultFormatter": "HookyQR.beautify"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
@@ -53,5 +50,34 @@
   "[markdown]": {},
   "editor.snippetSuggestions": "top",
   "editor.tabCompletion": "onlySnippets",
-  "editor.fontFamily": "'JetBrains Mono', Menlo, Monaco, 'Courier New', monospace"
+  "editor.fontFamily": "'JetBrains Mono', Menlo, Monaco, 'Courier New', monospace",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "liveshare.presence": true,
+  "terminal.integrated.inheritEnv": false,
+  "search.exclude": {
+    "**/dist": true
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python"
+},
+"jupyter.sendSelectionToInteractiveWindow": true,
+"workbench.editorAssociations": {
+  "*.ipynb": "jupyter.notebook.ipynb"
+},
+"python.showStartPage": false,
+"grok.serverUrl": "https://cp.api.trygrok.com",
+"grok.email": "zachcaceres@04cec0fe-0e45-529f-afdd-88b421bea019.grok",
+"jupyter.alwaysTrustNotebooks": true,
+"zenMode.hideLineNumbers": false,
+"workbench.editor.showTabs": false,
+"window.zoomLevel": 1,
+"editor.maxTokenizationLineLength": 40000,
+"mssql.connections": [
+  {
+    "server": "{{put-server-name-here}}",
+    "database": "{{put-database-name-here}}",
+    "user": "{{put-username-here}}",
+    "password": ""
+  }
+]
 }

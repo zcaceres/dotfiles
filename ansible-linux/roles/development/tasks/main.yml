@@ -36,6 +36,9 @@
 - name: Show Node Version
   shell: node -v
 
+- name: VSCode Config
+  shell: Echo 'Copy VSCode config files to wherever the directory is'
+
 - name: Install Yarn and Dependencies
   community.general.yarn:
     name: create-react-app

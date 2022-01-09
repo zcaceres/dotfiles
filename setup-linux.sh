@@ -8,3 +8,4 @@ ansible-galaxy collection install community.general
 
 # Run Ansible Playbook
 ansible-playbook -i ./ansible-linux/inventory ./ansible-linux/site.yml -c local
+
