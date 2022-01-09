@@ -1,0 +1,46 @@
+- name: Install Tools - apt 
+  apt:
+    name: ack,bat,nodejs,npm,htop,iftop,tldr,locate,wget,xsel,trash-cli,zeal,ghostwriter,hunspell-en-us
+
+- name: Install Rust
+  shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > /tmp/install_rust && /usr/bin/env bash /tmp/install_rust -y --no-modify-path && source $HOME/.cargo/env
+
+- name: Install nvm
+  shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash export NVM_DIR="$HOME/.config/nvm" [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+- name: Install NodeJS
+  shell: nvm install 16 && nvm use 16
+
+- name: Install Yarn
+  community.general.npm:
+    name: yarn
+    global: yes
+
+- name: Copy Deep Work Hosts File
+  copy:
+    src: ./hosts
+    dest: /etc/hosts
+
+- name: Typescript Syntax for Vim
+  git:
+    repo: https://github.com/leafgarland/typescript-vim.git
+    dest: ~/.vim/pack/typescript/start/typescript-vim
+    update: no
+
+- name: Install PIA
+  shell: echo 'https://www.privateinternetaccess.com/pages/changelog'
+
+- name: Install VSCode
+  shell: echo 'https://code.visualstudio.com/docs/setup/linux'
+
+- name: Show Node Version
+  shell: node -v
+
+- name: Install Yarn and Dependencies
+  community.general.yarn:
+    name: create-react-app
+    global: yes
+
+- name: Secure NPM
+  shell: npm config set ignore-scripts true
+
