@@ -42,7 +42,7 @@
 
 - name: Homebrew Install Tools
   community.general.homebrew:
-    name: python3,npm,nvm,yarn,dep,go,trash,awscli,ack,Rigellute/tap/spotify-tui,hub,redis,ffmpeg,git-filter-repo,imageoptim-cli,imagemagick,wget,parallel,mas,cowsay,nmap,pdfgrep,aljohri/-/docx2pdf,ocrmypdf,iftop,htop,mosh,pandoc,jq,telnet,shellcheck,youtube-dl,watch,zsh,pipx
+    name: python3,npm,nvm,yarn,dep,go,trash,awscli,ack,Rigellute/tap/spotify-tui,hub,redis,ffmpeg,git-filter-repo,imageoptim-cli,imagemagick,wget,parallel,mas,cowsay,nmap,pdfgrep,aljohri/-/docx2pdf,ocrmypdf,iftop,htop,mosh,pandoc,jq,telnet,shellcheck,youtube-dl,watch,zsh,pipx,ripgrep,exa,fd,procs,bottom,tealdeer,grex,delta,hyperfine,dust,sd
     state: present
 
 - name: Install Yarn and Dependencies
@@ -75,9 +75,6 @@
     global: yes
   community.general.yarn:
     name: serve
-    global: yes
-  community.general.yarn:
-    name: tldr
     global: yes
   community.general.yarn:
     name: typescript

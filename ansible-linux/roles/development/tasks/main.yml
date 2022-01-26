@@ -1,6 +1,6 @@
 - name: Install Tools - apt 
   apt:
-    name: ack,bat,nodejs,npm,htop,iftop,tldr,locate,wget,xsel,trash-cli,zeal,ghostwriter,hunspell-en-us
+    name: ack,bat,nodejs,npm,htop,iftop,tldr,locate,wget,xsel,trash-cli,zeal,ghostwriter,hunspell-en-us,ripgrep,exa,fd,procs,bottom,tealdeer,grex,delta,hyperfine,dust,sd,ffmpeg,parallel
 
 - name: Install Rust
   shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > /tmp/install_rust && /usr/bin/env bash /tmp/install_rust -y --no-modify-path && source $HOME/.cargo/env
