@@ -16,6 +16,44 @@
     name: yarn
     global: yes
 
+- name: Install Yarn and Dependencies
+   community.general.yarn:
+     name: serverless
+     global: yes
+   community.general.yarn:
+     name: carbon-now-cli
+     global: yes
+   community.general.yarn:
+     name: serve
+     global: yes
+   community.general.yarn:
+     name: browser-sync
+     global: yes
+   community.general.yarn:
+     name: gcloud
+     global: yes
+   community.general.yarn:
+     name: netlify-cli
+     global: yes
+   community.general.yarn:
+     name: sequelize
+     global: yes
+   community.general.yarn:
+     name: nodemon
+     global: yes
+   community.general.yarn:
+     name: create-react-app
+     global: yes
+   community.general.yarn:
+     name: serve
+     global: yes
+   community.general.yarn:
+     name: typescript
+     global: yes
+   community.general.yarn:
+     name: tsc
+     global: yes
+
 - name: Copy Deep Work Hosts File
   copy:
     src: ./hosts
@@ -39,11 +77,8 @@
 - name: VSCode Config
   shell: Echo 'Copy VSCode config files to wherever the directory is'
 
-- name: Install Yarn and Dependencies
-  community.general.yarn:
-    name: create-react-app
-    global: yes
-
 - name: Secure NPM
   shell: npm config set ignore-scripts true
 
+- name: Install pip tools
+  shell: pip install csvkit
