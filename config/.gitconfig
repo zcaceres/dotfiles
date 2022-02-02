@@ -10,6 +10,27 @@
   cob = checkout -b
 [core]
   excludesfile = ~/.gitignore_global
+  pager = delta
 [credential]
   helper = osxkeychain
   helper = cache --timeout=3600
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true  # use n and N to move between diff sections
+[merge]
+    conflictstyle = diff3
+[diff]
+    colorMoved = default
+[credential]
+    helper = osxkeychain
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[pull]
+	rebase = true
+[init]
+	defaultBranch = main
+

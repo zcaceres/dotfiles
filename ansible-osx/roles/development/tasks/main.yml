@@ -42,7 +42,7 @@
 
 - name: Homebrew Install Tools
   community.general.homebrew:
-    name: python3,npm,nvm,yarn,dep,go,trash,awscli,ack,Rigellute/tap/spotify-tui,hub,redis,ffmpeg,git-filter-repo,imageoptim-cli,imagemagick,wget,parallel,mas,cowsay,nmap,pdfgrep,aljohri/-/docx2pdf,ocrmypdf,iftop,htop,mosh,pandoc,jq,telnet,shellcheck,youtube-dl,watch,zsh,pipx,ripgrep,exa,fd,procs,bottom,tealdeer,grex,delta,hyperfine,dust,sd
+    name: python3,npm,nvm,yarn,dep,go,trash,awscli,ack,Rigellute/tap/spotify-tui,hub,redis,ffmpeg,git-filter-repo,imageoptim-cli,imagemagick,wget,parallel,mas,cowsay,nmap,pdfgrep,aljohri/-/docx2pdf,ocrmypdf,iftop,htop,mosh,pandoc,jq,telnet,shellcheck,youtube-dl,watch,zsh,pipx,ripgrep,exa,fd,procs,bottom,tealdeer,grex,hyperfine,dust,sd
     state: present
 
 - name: Install Yarn and Dependencies
@@ -91,7 +91,7 @@
 
 - name: Install Homebrew - Apps
   community.general.homebrew_cask:
-    name: anki,audacity,brave-browser,dash,discord,docker,sizzy,firefox,freedom,iterm2,imageoptim,kindle,monodraw,notion,ngrok,obs,postman,private-internet-access,rescuetime,skype,slack,signal,steam,spotify,telegram,visual-studio-code,whatsapp
+    name: anki,audacity,brave-browser,dash,discord,docker,sizzy,firefox,freedom,git-delta,iterm2,imageoptim,kindle,monodraw,notion,ngrok,obs,postman,private-internet-access,rescuetime,skype,slack,signal,steam,spotify,telegram,visual-studio-code,whatsapp
     state: present
   ignore_errors: yes 
 
