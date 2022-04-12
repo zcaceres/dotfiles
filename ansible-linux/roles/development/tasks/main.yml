@@ -1,6 +1,6 @@
 - name: Install Tools - apt 
   apt:
-    name: ack,bat,nodejs,npm,htop,iftop,tldr,locate,wget,xsel,trash-cli,zeal,ghostwriter,hunspell-en-us,ffmpeg,parallel
+    name: ack,bat,nodejs,npm,pnpm,htop,iftop,tldr,locate,wget,xsel,trash-cli,zeal,ghostwriter,hunspell-en-us,ffmpeg,parallel
 
 - name: Install Rust
   shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > /tmp/install_rust && /usr/bin/env bash /tmp/install_rust -y --no-modify-path && source $HOME/.cargo/env
@@ -19,43 +19,8 @@
     name: yarn
     global: yes
 
-- name: Install Yarn and Dependencies
-   community.general.yarn:
-     name: serverless
-     global: yes
-   community.general.yarn:
-     name: carbon-now-cli
-     global: yes
-   community.general.yarn:
-     name: serve
-     global: yes
-   community.general.yarn:
-     name: browser-sync
-     global: yes
-   community.general.yarn:
-     name: gcloud
-     global: yes
-   community.general.yarn:
-     name: netlify-cli
-     global: yes
-   community.general.yarn:
-     name: sequelize
-     global: yes
-   community.general.yarn:
-     name: nodemon
-     global: yes
-   community.general.yarn:
-     name: create-react-app
-     global: yes
-   community.general.yarn:
-     name: serve
-     global: yes
-   community.general.yarn:
-     name: typescript
-     global: yes
-   community.general.yarn:
-     name: tsc
-     global: yes
+- name: Install PNPM Global Dependencies
+  shell: pnpm add -g serverless carbon-now-cli serve netlify-cli nodemon typescript 
 
 - name: Copy Deep Work Hosts File
   copy:

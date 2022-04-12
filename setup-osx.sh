@@ -9,4 +9,4 @@ brew install ansible
 ansible-galaxy collection install community.general
 
 # Run ansible playbook locally
-ansible-playbook -i ./ansible-osx/inventory ./ansible-osx/site.yml -c local
+ansible-playbook -vvv -i ./ansible-osx/inventory ./ansible-osx/site.yml -c local
