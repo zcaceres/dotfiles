@@ -50,7 +50,7 @@
 
 - name: Homebrew Install Tools
   community.general.homebrew:
-    name: python3,npm,nvm,yarn,pnpm,go,trash,awscli,ack,hub,redis,ffmpeg,git-filter-repo,imagemagick,wget,parallel,mas,cowsay,nmap,pdfgrep,ocrmypdf,iftop,htop,mosh,pandoc,jq,telnet,shellcheck,youtube-dl,watch,zsh,pipx,tree,fd
+    name: python3,fzf,npm,nvm,yarn,pnpm,go,trash,awscli,ack,hub,redis,ffmpeg,git-filter-repo,imagemagick,wget,parallel,mas,cowsay,nmap,pdfgrep,ocrmypdf,iftop,htop,mosh,pandoc,jq,telnet,shellcheck,youtube-dl,watch,zsh,pipx,tree,fd
     state: present
 
 - name: Install PNPM and Dependencies
