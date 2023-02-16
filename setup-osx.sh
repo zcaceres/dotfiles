@@ -4,6 +4,7 @@ set -euxo pipefail
 ./scripts/install-homebrew.sh
 
 brew install ansible
+brew install gh
 
 # Install ansible collections
 ansible-galaxy collection install community.general
