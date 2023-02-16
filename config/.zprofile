@@ -63,7 +63,7 @@ alias python='python3'
 alias pythonup='pip install --upgrade pip; pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U'
 alias sourceme='. ~/.zprofile'
 # serve current directory on port 80
-alias servedir='python -m http.server 8080'
+alias servedir='python3 -m http.server 8080'
 alias c='clear'
 alias ls='exa'
 alias la='exa -la'
@@ -133,5 +133,3 @@ alias gupav='git pull --rebase --autostash -v'
 alias v='vi'
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
-
-alias servedir='python3 -m http.server 8080'
