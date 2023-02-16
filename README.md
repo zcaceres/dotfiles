@@ -24,11 +24,8 @@ Included in this is the setup for `go`, `python3`, and `nodejs`, my preferred la
   - [ack](https://beyondgrep.com/): like grep, but better
   - [awscli](https://github.com/aws/aws-cli): Amazon Web Services CLI
   - cowsay: the legend
-  - dep: package management for Go
   - [ffmpeg](https://ffmpeg.org): working with audio/video on the command line
-  - go: the language
   - [hub](https://hub.github.com/): GitHub from the command line
-  - [hugo](https://gohugo.io/): static site generator
   - jq: use JSON in bash
   - [mas](https://github.com/mas-cli/mas): Install apps from the App Store from the command line
   - mosh: nicer SSH
@@ -41,29 +38,24 @@ Included in this is the setup for `go`, `python3`, and `nodejs`, my preferred la
   - [yarn](https://yarnpkg.com/en/): ...also a package manager for NodeJs
   - youtube-dl: download youtube videos from the command line
 
-`yarn` installed:
-  - [browser-sync](https://browsersync.io/): synchronized cross-browser testing
+`npm` installed:
   - [carbon-now-cli](https://github.com/mixn/carbon-now-cli): awesome screenshots of code from the command line
-  - [create-react-app](https://github.com/facebook/create-react-app): boilerplate generator for React projects
   - [gcloud](https://cloud.google.com/sdk/gcloud/): Google Cloud CLI
   - [nodemon](https://nodemon.io/): long-running process manager for Node
   - [serverless](https://serverless.com/framework/docs/providers/aws/cli-reference/): CLI for working with Serverless
-  - [sequelize](https://docs.sequelizejs.com): Node.js ORM for PostgreSQL, MySQL, SQLite and MSSQL
   - [serve](https://www.npmjs.com/package/serve): start a simple server from the command line
 
 ### List of Programs
 
 `brew cask` installed:
-  - Adobe Creative Cloud: to design with XD
-  - [Anaconda](https://www.anaconda.com/distribution/): Python package manager and environment
+  - Arc: a better browser
   - [Anki](https://apps.ankiweb.net/): flash card app
   - Chrome: for web development
   - [Brave](https://brave.com/): browse without being spied on
   - [Discord](https://discordapp.com/store): for off-Slack communities
   - [Docker](https://www.docker.com/products/docker-desktop): container management
   - [Figma](https://www.figma.com/): for working with your design team
-  - iTerm2: preferred terminal
-  - Firefox: ...also for web development
+  - Warp: preferred terminal
   - [ngrok](https://ngrok.com/): turn localhost into a public webserver
   - [Notion](https://www.notion.so/): preferred note-taking / todo app
   - [OBS](https://obsproject.com/): streaming app
@@ -81,9 +73,4 @@ Included in this is the setup for `go`, `python3`, and `nodejs`, my preferred la
   - Kindle: for reading
 
 ### Config Files
-Config files are copied automatically in `setup.sh`. Check there for details.
-
-### VSCode
-My [preferred settings](./vscode/settings.json)
-
-My [preferred extensions](./vscode/vs-code-extensions.sh)
+Also copies important config files... VS Code extensions etc.
