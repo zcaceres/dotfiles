@@ -6,12 +6,10 @@ Last updated for: Ventura (13.2) Macbook M2
 ### OSX Settings
 > Good defaults borrowed from [https://github.com/taniarascia/mac](https://github.com/taniarascia/mac)
 
-Security and Privacy > General > App Store and identified developers
-Security and Privacy > General > Require password immediately after sleep or screen saver begins
-Security and Privacy > Firewall > On
-Security and Privacy > Privacy > Accessibility > Allow control for Dropbox, Steam, Rescuetime
-
-(Some defaults are also in `setup.sh`).
+- Security and Privacy > General > App Store and identified developers
+- Security and Privacy > General > Require password immediately after sleep or screen saver begins
+- Security and Privacy > Firewall > On
+- Security and Privacy > Privacy > Accessibility > Allow control for Dropbox, Steam, Rescuetime
 
 Log in to the Mac App Store before continuing.
 
