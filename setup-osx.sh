@@ -7,7 +7,7 @@ brew install ansible
 brew install gh
 
 # Install ansible collections
-ansible-galaxy collection install community.general
+ansible-galaxy collection install community.general --timeout 60
 
 # Run ansible playbook locally
 ansible-playbook -vvv -i ./ansible-osx/inventory ./ansible-osx/site.yml -c local
