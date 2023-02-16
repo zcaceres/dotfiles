@@ -1,90 +1,90 @@
-# - name: Set OSX Defaults
-#   shell: chflags nohidden ~/Library
+- name: Set OSX Defaults
+  shell: chflags nohidden ~/Library
 
-# - name: Set Key Repeat Part I
-#   community.general.osx_defaults:
-#     domain: NSGlobalDomain
-#     key: InitialKeyRepeat
-#     type: int
-#     value: 10 
-#     state: present
+- name: Set Key Repeat Part I
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: InitialKeyRepeat
+    type: int
+    value: 10 
+    state: present
 
-# - name: Set Key Repeat Part II
-#   community.general.osx_defaults:
-#     domain: NSGlobalDomain
-#     key: KeyRepeat
-#     type: int
-#     value: 1
-#     state: present
+- name: Set Key Repeat Part II
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: KeyRepeat
+    type: int
+    value: 1
+    state: present
 
-# - name: Show Hidden Files OSX
-#   community.general.osx_defaults:
-#     domain: com.apple.finder
-#     key: AppleShowAllFiles
-#     type: string
-#     value: YES
-#     state: present
+- name: Show Hidden Files OSX
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: AppleShowAllFiles
+    type: string
+    value: YES
+    state: present
 
-# - name: Show Pathbar in Finder
-#   community.general.osx_defaults:
-#     domain: com.apple.finder
-#     key: ShowPathbar
-#     type: bool
-#     value: true
-#     state: present
+- name: Show Pathbar in Finder
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowPathbar
+    type: bool
+    value: true
+    state: present
 
-# - name: Enable Safari Dev Tools
-#   community.general.osx_defaults:
-#     domain: com.apple.Safari
-#     key: IncludeInternalDebugMenu
-#     type: int
-#     value: 1
-#     state: present
+- name: Enable Safari Dev Tools
+  community.general.osx_defaults:
+    domain: com.apple.Safari
+    key: IncludeInternalDebugMenu
+    type: int
+    value: 1
+    state: present
 
-# - name: Install XCode
-#   shell: xcode-select --install
-#   ignore_errors: yes
+- name: Install XCode
+  shell: xcode-select --install
+  ignore_errors: yes
 
-# - name: Install Rust
-#   shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > /tmp/install_rust && /usr/bin/env bash /tmp/install_rust -y --no-modify-path
+- name: Install Rust
+  shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > /tmp/install_rust && /usr/bin/env bash /tmp/install_rust -y --no-modify-path
 
-# - name: Homebrew Install Tools
-#   community.general.homebrew:
-#     name: python3,cloc,fzf,npm,nvm,yarn,pnpm,go,trash,awscli,ack,hub,redis,ffmpeg,git-filter-repo,imagemagick,wget,parallel,mas,cowsay,nmap,pdfgrep,ocrmypdf,iftop,htop,mosh,pandoc,jq,telnet,shellcheck,youtube-dl,watch,zsh,pipx,tree,fd,neovim,glow,tldr
-#     state: present
+- name: Homebrew Install Tools
+  community.general.homebrew:
+    name: python3,cloc,fzf,npm,nvm,yarn,pnpm,go,trash,awscli,ack,hub,redis,ffmpeg,git-filter-repo,imagemagick,wget,parallel,mas,cowsay,nmap,pdfgrep,ocrmypdf,iftop,htop,mosh,pandoc,jq,telnet,shellcheck,youtube-dl,watch,zsh,pipx,tree,fd,neovim,glow,tldr
+    state: present
 
-# - name: Install Node with NVM
-#   shell: . $(brew --prefix nvm)/nvm.sh && nvm install node && nvm use node
+- name: Install Node with NVM
+  shell: . $(brew --prefix nvm)/nvm.sh && nvm install node && nvm use node
 
-# - name: Install NPM Dependencies
-#   shell: npm install global carbon-now-cli netlify-cli
+- name: Install NPM Dependencies
+  shell: npm install global carbon-now-cli netlify-cli
 
-# - name: Secure NPM
-#   shell: npm config set ignore-scripts true
+- name: Secure NPM
+  shell: npm config set ignore-scripts true
 
-# - name: Install Homebrew - Apps
-#   community.general.homebrew_cask:
-#     name: anki,arc,audacity,brave-browser,dash,discord,docker,freedom,iterm2,imageoptim,kindle,monodraw,notion,ngrok,obs,postman,rescuetime,skype,slack,signal,steam,spotify,telegram,visual-studio-code,whatsapp,private-internet-access,1password,pocket,postico,warp
-#     state: present
-#   ignore_errors: yes 
+- name: Install Homebrew - Apps
+  community.general.homebrew_cask:
+    name: anki,arc,audacity,brave-browser,dash,discord,docker,freedom,iterm2,imageoptim,kindle,monodraw,notion,ngrok,obs,postman,rescuetime,skype,slack,signal,steam,spotify,telegram,visual-studio-code,whatsapp,private-internet-access,1password,pocket,postico,warp
+    state: present
+  ignore_errors: yes
 
-# - name: Install Deep Learning Tools
-#   shell: pip3 install csvkit kaggle jupyterlab
+- name: Install Deep Learning Tools
+  shell: pip3 install csvkit kaggle jupyterlab
 
-# - name: Copy Gitconfig 
-#   copy:
-#     src: ../../../../config/.gitconfig
-#     dest: ~/.gitconfig
+- name: Copy Gitconfig 
+  copy:
+    src: ../../../../config/.gitconfig
+    dest: ~/.gitconfig
 
-# - name: Copy Global Gitignore
-#   copy:
-#     src: ../../../../config/.gitignore_global
-#     dest: ~/.gitignore_global
+- name: Copy Global Gitignore
+  copy:
+    src: ../../../../config/.gitignore_global
+    dest: ~/.gitignore_global
 
-# - name: Copy .vimrc
-#   copy:
-#     src: ../../../../config/.vimrc
-#     dest: ~/.vimrc
+- name: Copy .vimrc
+  copy:
+    src: ../../../../config/.vimrc
+    dest: ~/.vimrc
 
 - name: Copy .zshrc
   copy:
@@ -107,7 +107,7 @@
     dest: $HOME/.vscode/settings.json
 
 - name: Install VSCode Extensions
-  shell: cat ~/dotfiles/ansible-osx/roles/development/files/vscode/vs-code-extensions.sh | xargs -I _ code --install-extension _
+  shell: cat ~/dotfiles/ansible-osx/roles/development/files/vscode/vs-code-extensions | xargs -I _ code --install-extension _
 
 - name: Install Cargo Deps
   shell: source $HOME/.cargo/env && cargo install ripgrep git-delta exa procs bottom tealdeer hyperfine du-dust grex sd
