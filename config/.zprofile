@@ -56,6 +56,7 @@ alias ssh="echo 'You should consider using mosh instead' && ssh"
 alias yarn-update="curl --compressed -o- -L https://yarnpkg.com/install.sh | bash"
 alias man="echo 'You should consider using tldr instead' && man $1"
 alias doc='docker-compose'
+alias c='clear'
 alias dockerclean='docker system prune -f & docker volume prune -f'
 alias brewup='tldr --update && npm update -g && yarn global upgrade && softwareupdate -l && brew update; brew upgrade; brew cleanup; brew doctor;'
 alias python='python3'
@@ -131,6 +132,6 @@ alias gupa='git pull --rebase --autostash'
 alias gupav='git pull --rebase --autostash -v'
 alias v='vi'
 
-
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+alias servedir='python3 -m http.server 8080'

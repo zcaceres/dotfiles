@@ -50,7 +50,7 @@
 
 - name: Homebrew Install Tools
   community.general.homebrew:
-    name: python3,cloc,fzf,npm,nvm,yarn,pnpm,go,trash,awscli,ack,hub,redis,ffmpeg,git-filter-repo,imagemagick,wget,parallel,mas,cowsay,nmap,pdfgrep,ocrmypdf,iftop,htop,mosh,pandoc,jq,telnet,shellcheck,youtube-dl,watch,zsh,pipx,tree,fd,neovim,glow
+    name: python3,cloc,fzf,npm,nvm,yarn,pnpm,go,trash,awscli,ack,hub,redis,ffmpeg,git-filter-repo,imagemagick,wget,parallel,mas,cowsay,nmap,pdfgrep,ocrmypdf,iftop,htop,mosh,pandoc,jq,telnet,shellcheck,youtube-dl,watch,zsh,pipx,tree,fd,neovim,glow,tldr
     state: present
 
 - name: Install Node with NVM
@@ -64,7 +64,7 @@
 
 - name: Install Homebrew - Apps
   community.general.homebrew_cask:
-    name: anki,audacity,brave-browser,dash,discord,docker,firefox,freedom,iterm2,imageoptim,kindle,monodraw,notion,ngrok,obs,postman,rescuetime,skype,slack,signal,steam,spotify,telegram,visual-studio-code,whatsapp,private-internet-access,1password,pocket,postico,warp
+    name: anki,arc,audacity,brave-browser,dash,discord,docker,freedom,iterm2,imageoptim,kindle,monodraw,notion,ngrok,obs,postman,rescuetime,skype,slack,signal,steam,spotify,telegram,visual-studio-code,whatsapp,private-internet-access,1password,pocket,postico,warp
     state: present
   ignore_errors: yes 
 
