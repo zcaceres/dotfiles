@@ -24,7 +24,7 @@
   "editor.minimap.enabled": false,
   "editor.tabSize": 2,
   "workbench.sideBar.location": "left",
-  "workbench.colorTheme": "Community Material Theme",
+  "workbench.colorTheme": "Tomorrow Night Blue",
   "debug.node.autoAttach": "off",
   "window.reopenFolders": "all",
   "explorer.confirmDragAndDrop": false,
