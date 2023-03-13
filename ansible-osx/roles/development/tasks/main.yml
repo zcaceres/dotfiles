@@ -50,7 +50,7 @@
 
 - name: Homebrew Install Tools
   community.general.homebrew:
-    name: python3,cloc,fzf,npm,nvm,yarn,pnpm,go,trash,awscli,ack,hub,redis,ffmpeg,git-filter-repo,imagemagick,wget,parallel,mas,cowsay,nmap,pdfgrep,ocrmypdf,iftop,htop,mosh,pandoc,jq,telnet,shellcheck,youtube-dl,watch,zsh,pipx,tree,fd,neovim,glow,tldr
+    name: python3,cloc,fzf,npm,nvm,yarn,pnpm,go,trash,awscli,ack,hub,redis,ffmpeg,git-filter-repo,imagemagick,wget,parallel,mas,cowsay,nmap,pdfgrep,ocrmypdf,iftop,htop,mosh,pandoc,jq,telnet,shellcheck,youtube-dl,watch,zsh,pipx,tree,fd,neovim,glow,tldr,stripe/stripe-cli/stripe
     state: present
 
 - name: Install Node with NVM
