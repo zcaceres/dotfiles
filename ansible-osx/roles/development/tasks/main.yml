@@ -6,7 +6,7 @@
     domain: NSGlobalDomain
     key: InitialKeyRepeat
     type: int
-    value: 10
+    value: 10 
     state: present
 
 - name: Set Key Repeat Part II
@@ -50,7 +50,7 @@
 
 - name: Homebrew Install Tools
   community.general.homebrew:
-    name: python3,cloc,fzf,npm,nvm,yarn,pnpm,go,trash,awscli,ack,hub,redis,ffmpeg,git-filter-repo,imagemagick,wget,parallel,mas,cowsay,nmap,pdfgrep,ocrmypdf,iftop,htop,mosh,pandoc,jq,telnet,shellcheck,youtube-dl,watch,zsh,pipx,tree,fd,neovim,glow,tldr,stripe/stripe-cli/stripe
+    name: python3,cloc,fzf,npm,nvm,yarn,pnpm,go,trash,awscli,ack,hub,redis,ffmpeg,git-filter-repo,imagemagick,wget,parallel,mas,cowsay,nmap,pdfgrep,ocrmypdf,iftop,htop,mosh,pandoc,jq,telnet,shellcheck,youtube-dl,watch,zsh,pipx,tree,fd,neovim,glow,tldr,deno
     state: present
 
 - name: Install Node with NVM
@@ -64,14 +64,14 @@
 
 - name: Install Homebrew - Apps
   community.general.homebrew_cask:
-    name: anki,arc,audacity,brave-browser,dash,discord,docker,freedom,figma,imageoptim,kindle,monodraw,notion,ngrok,obs,postman,rescuetime,skype,slack,signal,steam,spotify,telegram,visual-studio-code,whatsapp,private-internet-access,1password,pocket,postico,warp,zoom
+    name: anki,arc,audacity,brave-browser,dash,discord,docker,freedom,iterm2,imageoptim,kindle,monodraw,notion,ngrok,obs,postman,rescuetime,skype,slack,signal,steam,spotify,telegram,visual-studio-code,whatsapp,private-internet-access,1password,pocket,postico,warp
     state: present
-  ignore_errors: yes
+  ignore_errors: yes 
 
 - name: Install Deep Learning Tools
   shell: pip3 install csvkit kaggle jupyterlab
 
-- name: Copy Gitconfig
+- name: Copy Gitconfig 
   copy:
     src: ../../../../config/.gitconfig
     dest: ~/.gitconfig
