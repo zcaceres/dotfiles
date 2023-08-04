@@ -1,12 +1,15 @@
-#! /usr/bin/bash
+#! /usr/bin/env bash
+set -euxo pipefail
 
-# Install Ansible
-sudo apt install -y ansible sshpass
+# Check if Ansible is installed
+if ! command -v ansible &>/dev/null; then
+    # Update apt and install Ansible and sshpass
+    sudo apt-get update
+    sudo apt-get install -y ansible sshpass
+fi
 
-# Get Ansible community blocks
-ansible-galaxy collection install community.general
+# Install Ansible collections
+ansible-galaxy collection install community.general --timeout 60
 
-# Run Ansible Playbook
-ansible-playbook -i ./ansible-linux/inventory ./ansible-linux/site.yml -c local
-
-
+# Run Ansible playbook locally
+ansible-playbook -vvv -i ./ansible-linux/inventory ./ansible-linux/site.yml -c local

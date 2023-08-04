@@ -6,7 +6,7 @@
     domain: NSGlobalDomain
     key: InitialKeyRepeat
     type: int
-    value: 10 
+    value: 10
     state: present
 
 - name: Set Key Repeat Part II
@@ -55,23 +55,27 @@
 
 - name: Install Node with NVM
   shell: . $(brew --prefix nvm)/nvm.sh && nvm install node && nvm use node
+  become: yes
 
 - name: Install NPM Dependencies
   shell: npm install global carbon-now-cli netlify-cli
+  become: yes
 
 - name: Secure NPM
   shell: npm config set ignore-scripts true
+  become: yes
 
 - name: Install Homebrew - Apps
   community.general.homebrew_cask:
-    name: anki,arc,audacity,brave-browser,dash,discord,docker,freedom,iterm2,imageoptim,kindle,monodraw,notion,ngrok,obs,postman,rescuetime,skype,slack,signal,steam,spotify,telegram,visual-studio-code,whatsapp,private-internet-access,1password,pocket,postico,warp
+    name: anki,arc,audacity,brave-browser,dash,discord,docker,freedom,iterm2,imageoptim,kindle,monodraw,notion,ngrok,obs,postman,rescuetime,slack,signal,spotify,telegram,visual-studio-code,whatsapp,private-internet-access,1password,pocket,postico,warp
     state: present
-  ignore_errors: yes 
+  ignore_errors: yes
 
 - name: Install Deep Learning Tools
   shell: pip3 install csvkit kaggle jupyterlab
+  become: yes
 
-- name: Copy Gitconfig 
+- name: Copy Gitconfig
   copy:
     src: ../../../../config/.gitconfig
     dest: ~/.gitconfig
@@ -111,6 +115,7 @@
 
 - name: Install Cargo Deps
   shell: source $HOME/.cargo/env && cargo install ripgrep git-delta exa procs bottom tealdeer hyperfine du-dust grex sd
+  become: yes
 
 - name: Update TLDR Cache
   shell: tldr --update
