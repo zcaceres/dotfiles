@@ -55,3 +55,6 @@
 
 - name: Install pip tools
   shell: pip install csvkit
+
+- name: Install Bun runtime
+  shell: curl -fsSL https://bun.sh/install | bash

@@ -119,3 +119,7 @@
 
 - name: Update TLDR Cache
   shell: tldr --update
+
+- name: Install Bun runtime
+  shell: curl -fsSL https://bun.sh/install | bash
+  become: yes
