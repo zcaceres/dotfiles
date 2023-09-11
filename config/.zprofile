@@ -58,7 +58,7 @@ alias man="echo 'You should consider using tldr instead' && man $1"
 alias doc='docker-compose'
 alias c='clear'
 alias dockerclean='docker system prune -f & docker volume prune -f'
-alias brewup='tldr --update && npm update -g && yarn global upgrade && softwareupdate -l && brew update; brew upgrade; brew cleanup; brew doctor;'
+alias brewup='tldr --update && npm update -g && yarn global upgrade && softwareupdate -l && brew update; brew upgrade; brew cleanup; brew doctor; && bun upgrade'
 alias python='python3'
 alias pythonup='pip install --upgrade pip; pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U'
 alias sourceme='. ~/.zprofile'

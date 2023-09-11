@@ -121,5 +121,4 @@
   shell: tldr --update
 
 - name: Install Bun runtime
-  shell: curl -fsSL https://bun.sh/install | bash
-  become: yes
+  shell: brew tap oven-sh/bun && brew install bun
