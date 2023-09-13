@@ -17,6 +17,7 @@ Log in to the Mac App Store before continuing.
 
 `brew` installed:
   - [ack](https://beyondgrep.com/): like grep, but better.
+  - [bun](https://bun.sh): drop-in replacement for NodeJS
   - [cloc](https://github.com/AlDanial/cloc): Count, or compute differences of, physical lines of source code in many programming languages.
   - [deno](https://deno.land/): A secure runtime for JavaScript and TypeScript.
   - [fd](https://github.com/sharkdp/fd): Simple, fast and user-friendly alternative to 'find'.
