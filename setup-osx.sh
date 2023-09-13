@@ -11,9 +11,8 @@ if ! command -v brew &>/dev/null; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# Install Ansible and GitHub CLI
+# Install Ansible
 brew install ansible
-brew install gh
 
 # Install Ansible collections
 ansible-galaxy collection install community.general --timeout 60

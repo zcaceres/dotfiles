@@ -48,17 +48,20 @@
 - name: Install Rust
   shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > /tmp/install_rust && /usr/bin/env bash /tmp/install_rust -y --no-modify-path
 
+- name: Install Bun runtime
+  shell: brew tap oven-sh/bun
+
 - name: Homebrew Install Tools
   community.general.homebrew:
-    name: python3,cloc,fzf,npm,nvm,yarn,pnpm,go,trash,awscli,ack,hub,redis,ffmpeg,git-filter-repo,imagemagick,wget,parallel,mas,cowsay,nmap,pdfgrep,ocrmypdf,iftop,htop,mosh,pandoc,jq,telnet,shellcheck,youtube-dl,watch,zsh,pipx,tree,fd,neovim,glow,tldr,deno
+    name: python3,cloc,bun,fzf,gh,npm,nvm,yarn,pnpm,go,trash,awscli,ack,hub,redis,ffmpeg,git-filter-repo,imagemagick,wget,parallel,mas,cowsay,nmap,pdfgrep,ocrmypdf,iftop,htop,mosh,pandoc,jq,telnet,shellcheck,youtube-dl,watch,zsh,pipx,tree,fd,neovim,glow,tldr,deno
     state: present
 
 - name: Install Node with NVM
   shell: . $(brew --prefix nvm)/nvm.sh && nvm install node && nvm use node
   become: yes
 
-- name: Install NPM Dependencies
-  shell: npm install global carbon-now-cli netlify-cli
+- name: (Bun) Install Global Dependencies
+  shell: bun add -g carbon-now-cli netlify-cli
   become: yes
 
 - name: Secure NPM
@@ -119,6 +122,3 @@
 
 - name: Update TLDR Cache
   shell: tldr --update
-
-- name: Install Bun runtime
-  shell: brew tap oven-sh/bun && brew install bun

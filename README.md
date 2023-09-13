@@ -1,7 +1,7 @@
 # Setting Up a New Macbook or Linux Machine for Development
 Tools, configs, and setup.
 
-Last updated for: Ventura (13.3) Macbook M1
+Last updated for: Ventura (13.4) Macbook M1
 
 ### OSX Settings
 > Good defaults borrowed from [https://github.com/taniarascia/mac](https://github.com/taniarascia/mac)
@@ -24,6 +24,7 @@ Log in to the Mac App Store before continuing.
   - [fzf](https://github.com/junegunn/fzf): A general-purpose command-line fuzzy finder.
   - [git-filter-repo](https://github.com/newren/git-filter-repo): Quickly rewrite git repository history (filter-branch replacement).
   - [glow](https://github.com/charmbracelet/glow): Render markdown on the CLI, with pizzazz! 💅🏻
+  - [gh](https://cli.github.com/): Github CLI
   - [go](https://golang.org/): Open source programming language that makes it easy to build simple, reliable, and efficient software.
   - [htop](https://htop.dev/): Interactive process viewer.
   - [iftop](https://www.ex-parrot.com/~pdw/iftop/): Display bandwidth usage on an interface.
@@ -47,7 +48,7 @@ Log in to the Mac App Store before continuing.
   - [youtube-dl](https://github.com/ytdl-org/youtube-dl): Command-line program to download videos from YouTube.com and other video sites.
   - [zsh](https://www.zsh.org/): Powerful shell with scripting language.
 
-`npm` installed:
+`bun` installed:
   - [carbon-now-cli](https://github.com/mixn/carbon-now-cli): Beautiful images of your code — from right inside your terminal.
   - [netlify-cli](https://www.netlify.com/products/dev/): Netlify command line tool.
 
