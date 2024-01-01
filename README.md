@@ -45,7 +45,7 @@ Log in to the Mac App Store before continuing.
   - [trash](https://github.com/sindresorhus/trash): Move files and directories to the trash.
   - [tree](https://linux.die.net/man/1/tree): Recursive directory listing command that produces a depth indented listing of files.
   - [watch](https://linux.die.net/man/1/watch): Execute a program periodically, showing output fullscreen.
-  - [youtube-dl](https://github.com/ytdl-org/youtube-dl): Command-line program to download videos from YouTube.com and other video sites.
+  - [ytdlp-dl](https://github.com/yt-dlp/yt-dlp): Command-line program to download videos from YouTube.com and other video sites.
   - [zsh](https://www.zsh.org/): Powerful shell with scripting language.
 
 `bun` installed:
