@@ -70,7 +70,7 @@
 
 - name: Install Homebrew - Apps
   community.general.homebrew_cask:
-    name: anki,arc,audacity,brave-browser,dash,discord,docker,freedom,iterm2,imageoptim,kindle,notion,ngrok,obs,postman,rescuetime,slack,signal,spotify,telegram,visual-studio-code,whatsapp,private-internet-access,1password,pocket,postico,warp
+    name: anki,arc,audacity,brave-browser,dash,discord,docker,freedom,iterm2,imageoptim,kindle,notion,ngrok,obs,postman,rescuetime,slack,signal,spotify,telegram,visual-studio-code,whatsapp,private-internet-access,playdate-mirror,1password,pocket,postico,warp
     state: present
   ignore_errors: yes
 
