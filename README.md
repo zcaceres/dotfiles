@@ -11,8 +11,6 @@ Last updated for: Ventura (13.4) Macbook M1
 - Security and Privacy > Firewall > On
 - Security and Privacy > Privacy > Accessibility > Allow control for Dropbox, Steam, Rescuetime
 
-Log in to the Mac App Store before continuing.
-
 ### List of Tools
 
 `brew` installed:
