@@ -1,6 +1,6 @@
 - name: Install Tools - apt
   apt:
-    name: ack,bat,cloc,nodejs,npm,pnpm,htop,iftop,tldr,locate,wget,xsel,trash-cli,zeal,ghostwriter,hunspell-en-us,ffmpeg,parallel,glow,deno
+    name: ack,bat,cloc,nodejs,npm,htop,iftop,tldr,locate,wget,xsel,trash-cli,zeal,ghostwriter,hunspell-en-us,ffmpeg,parallel,glow,deno
 
 - name: Install Rust
   shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > /tmp/install_rust && /usr/bin/env bash /tmp/install_rust -y --no-modify-path && source $HOME/.cargo/env
@@ -19,8 +19,15 @@
     name: yarn
     global: yes
 
-- name: Install PNPM Global Dependencies
-  shell: pnpm add -g carbon-now-cli netlify-cli
+- name: Install Carbon Now
+  community.general.npm:
+    name: carbon-now-cli
+    global: yes
+
+- name: Install Carbon Now
+  community.general.npm:
+    name: netlify-cli
+    global: yes
 
 - name: Copy Deep Work Hosts File
   copy:
