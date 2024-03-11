@@ -131,5 +131,6 @@ alias gup='git pull --rebase'
 alias gupa='git pull --rebase --autostash'
 alias gupav='git pull --rebase --autostash -v'
 alias v='vi'
+alias copilot='gh copilot'
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
