@@ -81,7 +81,6 @@ Last updated for: Ventura (13.4) Macbook M1
   - [Rescuetime](https://www.rescuetime.com/): Use your time wisely.
   - Slack: Where work happens.
   - [Signal](https://signal.org/): Say "hello" to a different messaging experience.
-  - Spotify: Listen to new music, podcasts, and songs.
   - [Telegram](https://telegram.org/): A new era of messaging.
   - [Visual Studio Code](https://code.visualstudio.com/): Code editing. Redefined.
   - [Warp](https://www.cloudflarewarp.com/): Better Internet for everyone.
