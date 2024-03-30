@@ -53,7 +53,7 @@
 
 - name: Homebrew Install Tools
   community.general.homebrew:
-    name: python3,cloc,bun,fzf,gh,npm,nvm,yarn,go,trash,awscli,ack,hub,redis,ffmpeg,git-filter-repo,imagemagick,wget,parallel,mas,figlet,nmap,pdfgrep,ocrmypdf,iftop,htop,mosh,pandoc,jq,telnet,shellcheck,youtube-dl,watch,zsh,pipx,tree,fd,neovim,glow,tldr,deno
+    name: cloc,bun,fzf,gh,npm,nvm,go,trash,awscli,ack,hub,redis,ffmpeg,git-filter-repo,imagemagick,wget,parallel,mas,figlet,nmap,pdfgrep,ocrmypdf,iftop,htop,mosh,pyenv,pandoc,jq,telnet,shellcheck,youtube-dl,watch,zsh,pipx,tree,fd,neovim,glow,tldr,deno
     state: present
 
 - name: Install Node with NVM
@@ -61,7 +61,7 @@
   become: yes
 
 - name: (Bun) Install Global Dependencies
-  shell: bun add -g carbon-now-cli netlify-cli
+  shell: bun add -g carbon-now-cli netlify-cli neovim cowsay
   become: yes
 
 - name: Secure NPM
@@ -75,42 +75,42 @@
   ignore_errors: yes
 
 - name: Install Deep Learning Tools
-  shell: pip3 install csvkit kaggle jupyterlab
+  shell: pip install csvkit kaggle jupyterlab
   become: yes
 
 - name: Copy Gitconfig
   copy:
-    src: ../../../../config/.gitconfig
+    src: ./config/.gitconfig
     dest: ~/.gitconfig
 
 - name: Copy Global Gitignore
   copy:
-    src: ../../../../config/.gitignore_global
+    src: ./config/.gitignore_global
     dest: ~/.gitignore_global
 
 - name: Copy .vimrc
   copy:
-    src: ../../../../config/.vimrc
+    src: ./config/.vimrc
     dest: ~/.vimrc
 
 - name: Copy .zshrc
   copy:
-    src: ../../../../config/.zshrc
+    src: ./config/.zshrc
     dest: ~/.zshrc
 
 - name: Copy .zprofile
   copy:
-    src: ../../../../config/.zprofile
+    src: ./config/.zprofile
     dest: ~/.zprofile
 
 - name: Copy VSCode Prefs Part I
   copy:
-    src: ../files/vscode/keybindings.json
+    src: ./files/vscode/keybindings.json
     dest: $HOME/Library/Application\ Support/Code/User/keybindings.json
 
 - name: Copy VSCode Prefs Part II
   copy:
-    src: ../files/vscode/settings.json
+    src: ./files/vscode/settings.json
     dest: $HOME/Library/Application\ Support/Code/User/settings.json
 
 - name: Install VSCode Extensions

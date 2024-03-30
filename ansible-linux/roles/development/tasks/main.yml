@@ -1,6 +1,6 @@
 - name: Install Tools - apt
   apt:
-    name: ack,bat,cloc,nodejs,npm,htop,iftop,tldr,locate,wget,xsel,trash-cli,zeal,ghostwriter,hunspell-en-us,ffmpeg,parallel,glow,deno
+    name: ack,bat,cloc,nodejs,npm,htop,iftop,tldr,locate,wget,xsel,trash-cli,zeal,ghostwriter,hunspell-en-us,ffmpeg,parallel,pyenv,glow,deno
 
 - name: Install Rust
   shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > /tmp/install_rust && /usr/bin/env bash /tmp/install_rust -y --no-modify-path && source $HOME/.cargo/env
@@ -8,26 +8,20 @@
 - name: Install Rust Tools
   shell: cargo install bottom tealdeer git-delta du-dust sd ripgrep procs exa fd-find
 
+- name: Install Bun
+  shell: curl -fsSL https://bun.sh/install | bash
+
 - name: Install nvm
   shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash export NVM_DIR="$HOME/.config/nvm" [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 - name: Install NodeJS
   shell: nvm install node && nvm use node
 
-- name: Install Yarn
-  community.general.npm:
-    name: yarn
-    global: yes
+- name: Bun global packages
+  shell: bun install -g carbon-now-cli netlify-cli neovim
 
-- name: Install Carbon Now
-  community.general.npm:
-    name: carbon-now-cli
-    global: yes
-
-- name: Install Carbon Now
-  community.general.npm:
-    name: netlify-cli
-    global: yes
+- name: pyenv Python install
+  shell: pyenv install 3.11
 
 - name: Copy Deep Work Hosts File
   copy:

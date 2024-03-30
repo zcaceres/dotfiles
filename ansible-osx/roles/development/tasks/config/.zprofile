@@ -58,12 +58,11 @@ alias man="echo 'You should consider using tldr instead' && man $1"
 alias doc='docker-compose'
 alias c='clear'
 alias dockerclean='docker system prune -f & docker volume prune -f'
-alias brewup='tldr --update && npm update -g && bun update -g && softwareupdate -l && brew update; brew upgrade --require-sha; brew cleanup; brew doctor && bun upgrade && brew upgrade --casks --greedy --require-sha'
-alias python='python3'
+alias brewup='tldr --update && bun update -g && softwareupdate -l && brew update; brew upgrade --require-sha; brew cleanup; brew doctor && bun upgrade && brew upgrade --casks --greedy --require-sha'
 alias pythonup='pip install --upgrade pip; pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U'
 alias sourceme='. ~/.zprofile'
 # serve current directory on port 80
-alias servedir='python3 -m http.server 8080'
+alias servedir='python -m http.server 8080'
 alias c='clear'
 alias ls='exa'
 alias la='exa -la'
@@ -133,4 +132,11 @@ alias gupav='git pull --rebase --autostash -v'
 alias v='vi'
 alias copilot='gh copilot'
 
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
+export OPEN_AI_API_KEY="PUT_API_KEY_HERE"
