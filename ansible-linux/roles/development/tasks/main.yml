@@ -6,7 +6,7 @@
   shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > /tmp/install_rust && /usr/bin/env bash /tmp/install_rust -y --no-modify-path && source $HOME/.cargo/env
 
 - name: Install Rust Tools
-  shell: cargo install bottom tealdeer git-delta du-dust sd ripgrep procs exa fd-find
+  shell: cargo install ripgrep git-delta exa procs bottom tealdeer hyperfine du-dust grex sd fd-find
 
 - name: Install Bun
   shell: curl -fsSL https://bun.sh/install | bash
@@ -57,5 +57,6 @@
 - name: Install pip tools
   shell: pip install csvkit
 
-- name: Install Bun runtime
-  shell: curl -fsSL https://bun.sh/install | bash
+- name: Update TLDR Cache
+  shell: tldr --update
+

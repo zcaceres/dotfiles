@@ -1,8 +1,0 @@
-{
-  // Allows React to resolve imports absolutely (from a base directory specified here as `src`)
-  "compilerOptions": {
-    "baseUrl": "src"
-  },
-  "include": ["src"]
-}
-

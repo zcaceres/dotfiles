@@ -70,12 +70,12 @@
 
 - name: Install Homebrew - Apps
   community.general.homebrew_cask:
-    name: anki,arc,audacity,brave-browser,dash,discord,docker,freedom,iterm2,imageoptim,kindle,notion,ngrok,obs,postman,rescuetime,slack,signal,telegram,visual-studio-code,whatsapp,private-internet-access,playdate-mirror,1password,pocket,postico,warp
+    name: 1password,anki,arc,audacity,brave-browser,chromium,dash,dbeaver-community,discord,docker,dropbox,figma,freedom,firefox,github,google-chrome,google-earth-pro,imageoptim,iterm2,monodraw,kindle,notion,ngrok,obs,pocket,postman,postico,playdate-mirror,private-internet-access,rescuetime,slack,signal,sizzy,telegram,visual-studio-code,whatsapp,warp
     state: present
   ignore_errors: yes
 
 - name: Install Deep Learning Tools
-  shell: pip install csvkit kaggle jupyterlab
+  shell: pip install csvkit
   become: yes
 
 - name: Copy Gitconfig
@@ -117,8 +117,11 @@
   shell: cat ~/dotfiles/ansible-osx/roles/development/files/vscode/vs-code-extensions | xargs -I _ code --install-extension _
 
 - name: Install Cargo Deps
-  shell: source $HOME/.cargo/env && cargo install ripgrep git-delta exa procs bottom tealdeer hyperfine du-dust grex sd
+  shell: source $HOME/.cargo/env && cargo install ripgrep git-delta fd-find exa procs bottom tealdeer hyperfine du-dust grex sd
   become: yes
 
 - name: Update TLDR Cache
   shell: tldr --update
+
+- name: Install browserslist
+  shell: bunx browserslist && bunx update-browserslist-db@latest
