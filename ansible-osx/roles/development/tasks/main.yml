@@ -103,6 +103,11 @@
     src: ./config/.zprofile
     dest: ~/.zprofile
 
+- name: Copy ZED Prefs
+  copy:
+    src: "./zed/settings.json"
+    dest: "~/.config/zed/settings.json"
+
 - name: Copy VSCode Prefs Part I
   copy:
     src: ./files/vscode/keybindings.json

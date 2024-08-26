@@ -1,11 +1,8 @@
-// Place your settings in this file to overwrite the default settings
 {
   "editor.renderIndentGuides": true,
   "editor.renderWhitespace": "boundary",
   "editor.renderControlCharacters": false,
-  "editor.rulers": [
-    80
-  ],
+  "editor.rulers": [80],
   "editor.trimAutoWhitespace": false,
   "editor.wordWrap": "on",
   "files.trimTrailingWhitespace": true,
@@ -35,7 +32,7 @@
   "terminal.integrated.confirmOnExit": true,
   "zenMode.restore": true,
   "window.restoreFullscreen": true,
-"editor.detectIndentation": false,
+  "editor.detectIndentation": false,
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -59,25 +56,25 @@
   },
   "[python]": {
     "editor.defaultFormatter": "ms-python.python"
-},
-"jupyter.sendSelectionToInteractiveWindow": true,
-"workbench.editorAssociations": {
-  "*.ipynb": "jupyter.notebook.ipynb"
-},
-"python.showStartPage": false,
-"grok.serverUrl": "https://cp.api.trygrok.com",
-"grok.email": "zachcaceres@04cec0fe-0e45-529f-afdd-88b421bea019.grok",
-"jupyter.alwaysTrustNotebooks": true,
-"zenMode.hideLineNumbers": false,
-"workbench.editor.showTabs": false,
-"window.zoomLevel": 1,
-"editor.maxTokenizationLineLength": 40000,
-"mssql.connections": [
-  {
-    "server": "{{put-server-name-here}}",
-    "database": "{{put-database-name-here}}",
-    "user": "{{put-username-here}}",
-    "password": ""
-  }
-]
+  },
+  "jupyter.sendSelectionToInteractiveWindow": true,
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
+  "python.showStartPage": false,
+  "grok.serverUrl": "https://cp.api.trygrok.com",
+  "grok.email": "zachcaceres@04cec0fe-0e45-529f-afdd-88b421bea019.grok",
+  "jupyter.alwaysTrustNotebooks": true,
+  "zenMode.hideLineNumbers": false,
+  "workbench.editor.showTabs": false,
+  "window.zoomLevel": 1,
+  "editor.maxTokenizationLineLength": 40000,
+  "mssql.connections": [
+    {
+      "server": "{{put-server-name-here}}",
+      "database": "{{put-database-name-here}}",
+      "user": "{{put-username-here}}",
+      "password": ""
+    }
+  ]
 }
