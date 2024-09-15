@@ -17,6 +17,15 @@
     value: 1
     state: present
 
+#  defaults write com.apple.screencaptureui "thumbnailExpiration" -float 30
+- name: Set Screenshot Thumbnail Expiration
+  community.general.osx_defaults:
+    domain: com.apple.screencaptureui
+    key: thumbnailExpiration
+    type: float
+    value: 15
+    state: present
+
 - name: Show Hidden Files OSX
   community.general.osx_defaults:
     domain: com.apple.finder
