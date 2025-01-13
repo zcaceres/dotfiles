@@ -1,54 +1,72 @@
+git_diff() {
+    # with credit to Chong-U Lim
+    local file_name=${1:-staged_diff.txt}
+    git diff --cached > "$file_name"
+    if command -v pbcopy &> /dev/null; then
+        git diff --cached | pbcopy
+        echo "Diff saved to $file_name and copied to clipboard (macOS)."
+    elif command -v xclip &> /dev/null; then
+        git diff --cached | xclip -selection clipboard
+        echo "Diff saved to $file_name and copied to clipboard (Linux)."
+    elif command -v clip &> /dev/null; then
+        git diff --cached | clip
+        echo "Diff saved to $file_name and copied to clipboard (Windows)."
+    else
+        echo "Clipboard tool not found. Diff saved to $file_name."
+    fi
+}
+
 prompt_git() {
-	local s=''
-	local branchName=''
+  local s=''
+  local branchName=''
 
-	# Check if the current directory is in a Git repository.
-	if [ $(
-		git rev-parse --is-inside-work-tree &>/dev/null
-		echo "${?}"
-	) == '0' ]; then
+  # Check if the current directory is in a Git repository.
+  if [ $(
+    git rev-parse --is-inside-work-tree &>/dev/null
+    echo "${?}"
+  ) == '0' ]; then
 
-		# check if the current directory is in .git before running git checks
-		if [ "$(git rev-parse --is-inside-git-dir 2>/dev/null)" == 'false' ]; then
+    # check if the current directory is in .git before running git checks
+    if [ "$(git rev-parse --is-inside-git-dir 2>/dev/null)" == 'false' ]; then
 
-			# Ensure the index is up to date.
-			git update-index --really-refresh -q &>/dev/null
+      # Ensure the index is up to date.
+      git update-index --really-refresh -q &>/dev/null
 
-			# Check for uncommitted changes in the index.
-			if ! $(git diff --quiet --ignore-submodules --cached); then
-				s+='+'
-			fi
+      # Check for uncommitted changes in the index.
+      if ! $(git diff --quiet --ignore-submodules --cached); then
+        s+='+'
+      fi
 
-			# Check for unstaged changes.
-			if ! $(git diff-files --quiet --ignore-submodules --); then
-				s+='!'
-			fi
+      # Check for unstaged changes.
+      if ! $(git diff-files --quiet --ignore-submodules --); then
+        s+='!'
+      fi
 
-			# Check for untracked files.
-			if [ -n "$(git ls-files --others --exclude-standard)" ]; then
-				s+='?'
-			fi
+      # Check for untracked files.
+      if [ -n "$(git ls-files --others --exclude-standard)" ]; then
+        s+='?'
+      fi
 
-			# Check for stashed files.
-			if $(git rev-parse --verify refs/stash &>/dev/null); then
-				s+='$'
-			fi
+      # Check for stashed files.
+      if $(git rev-parse --verify refs/stash &>/dev/null); then
+        s+='$'
+      fi
 
-		fi
+    fi
 
-		# Get the short symbolic ref.
-		# If HEAD isn’t a symbolic ref, get the short SHA for the latest commit
-		# Otherwise, just give up.
-		branchName="$(git symbolic-ref --quiet --short HEAD 2>/dev/null ||
-			git rev-parse --short HEAD 2>/dev/null ||
-			echo '(unknown)')"
+    # Get the short symbolic ref.
+    # If HEAD isn’t a symbolic ref, get the short SHA for the latest commit
+    # Otherwise, just give up.
+    branchName="$(git symbolic-ref --quiet --short HEAD 2>/dev/null ||
+      git rev-parse --short HEAD 2>/dev/null ||
+      echo '(unknown)')"
 
-		[ -n "${s}" ] && s=" [${s}]"
+    [ -n "${s}" ] && s=" [${s}]"
 
-		echo -e "${1}${branchName}${2}${s}"
-	else
-		return
-	fi
+    echo -e "${1}${branchName}${2}${s}"
+  else
+    return
+  fi
 }
 
 [[ -s ~/.zshrc ]] && source ~/.zshrc
@@ -59,9 +77,8 @@ alias ssh="echo 'You should consider using mosh instead' && ssh"
 alias yarn-update="curl --compressed -o- -L https://yarnpkg.com/install.sh | bash"
 alias man="echo 'You should consider using tldr instead' && man $1"
 alias doc='docker-compose'
-alias c='clear'
 alias dockerclean='docker system prune -f & docker volume prune -f'
-alias brewup='tldr --update && bun update -g && softwareupdate -l && brew update; brew upgrade --require-sha; brew cleanup; brew doctor && bun upgrade --stable && brew upgrade --casks --greedy --require-sha && rustup update'
+alias brewup='tldr --update && bun upgrade --stable && bun update -g && softwareupdate -l && brew update; brew upgrade --require-sha; brew cleanup; brew doctor; bun upgrade; brew upgrade --casks --greedy --require-sha --dry-run'
 alias pythonup='pip install --upgrade pip; pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U'
 alias sourceme='. ~/.zprofile'
 # serve current directory on port 80
@@ -133,13 +150,64 @@ alias gup='git pull --rebase'
 alias gupa='git pull --rebase --autostash'
 alias gupav='git pull --rebase --autostash -v'
 alias v='vi'
+alias b='bun'
 alias copilot='gh copilot'
 
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+copilot_what-the-shell() {
+  TMPFILE=$(mktemp)
+  trap 'rm -f $TMPFILE' EXIT
+  if /opt/homebrew/bin/github-copilot-cli what-the-shell "$@" --shellout $TMPFILE; then
+    if [ -e "$TMPFILE" ]; then
+      FIXED_CMD=$(cat $TMPFILE)
+      print -s "$FIXED_CMD"
+      eval "$FIXED_CMD"
+    else
+      echo "Apologies! Extracting command failed"
+    fi
+  else
+    return 1
+  fi
+}
+alias '??'='copilot_what-the-shell'
+
+copilot_git-assist() {
+  TMPFILE=$(mktemp)
+  trap 'rm -f $TMPFILE' EXIT
+  if /opt/homebrew/bin/github-copilot-cli git-assist "$@" --shellout $TMPFILE; then
+    if [ -e "$TMPFILE" ]; then
+      FIXED_CMD=$(cat $TMPFILE)
+      print -s "$FIXED_CMD"
+      eval "$FIXED_CMD"
+    else
+      echo "Apologies! Extracting command failed"
+    fi
+  else
+    return 1
+  fi
+}
+alias 'git?'='copilot_git-assist'
+
+copilot_gh-assist() {
+  TMPFILE=$(mktemp)
+  trap 'rm -f $TMPFILE' EXIT
+  if /opt/homebrew/bin/github-copilot-cli gh-assist "$@" --shellout $TMPFILE; then
+    if [ -e "$TMPFILE" ]; then
+      FIXED_CMD=$(cat $TMPFILE)
+      print -s "$FIXED_CMD"
+      eval "$FIXED_CMD"
+    else
+      echo "Apologies! Extracting command failed"
+    fi
+  else
+    return 1
+  fi
+}
+alias 'gh?'='copilot_gh-assist'
+alias 'wts'='copilot_what-the-shell'
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-export OPEN_AI_API_KEY="PUT_API_KEY_HERE"
+export SERP_API_KEY='KEY HERE'
+export OPENAI_API_KEY="KEY HERE"
+export ANTHROPIC_API_KEY="KEY HERE"
+export BRAVE_API_KEY="KEY HERE"

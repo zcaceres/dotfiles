@@ -1,6 +1,6 @@
 - name: Install Tools - apt
   apt:
-    name: ack,bat,cloc,nodejs,npm,htop,iftop,tldr,locate,wget,xsel,trash-cli,zeal,ghostwriter,hunspell-en-us,ffmpeg,parallel,pyenv,glow,deno
+    name: ack,bat,cloc,nodejs,npm,htop,iftop,tldr,locate,wget,xsel,trash-cli,zeal,ghostwriter,hunspell-en-us,ffmpeg,parallel,pyenv,glow,deno,llm
 
 - name: Install Rust
   shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > /tmp/install_rust && /usr/bin/env bash /tmp/install_rust -y --no-modify-path && source $HOME/.cargo/env
@@ -22,6 +22,9 @@
 
 - name: pyenv Python install
   shell: pyenv install 3.11
+
+- name: install uv
+  shell: curl -LsSf https://astral.sh/uv/install.sh | sh
 
 - name: Copy Deep Work Hosts File
   copy:
@@ -55,8 +58,7 @@
   shell: npm config set ignore-scripts true
 
 - name: Install pip tools
-  shell: pip install csvkit
+  shell: uv pip install csvkit
 
 - name: Update TLDR Cache
   shell: tldr --update
-

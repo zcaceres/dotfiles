@@ -52,7 +52,7 @@
 
 - name: Install XCode
   shell: xcode-select --install
-  ignore_errors: yes
+  ignore_errors: true
 
 - name: Install Rust
   shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > /tmp/install_rust && /usr/bin/env bash /tmp/install_rust -y --no-modify-path
@@ -62,30 +62,38 @@
 
 - name: Homebrew Install Tools
   community.general.homebrew:
-    name: cloc,bun,fzf,gh,npm,nvm,go,trash,awscli,ack,hub,redis,ffmpeg,git-filter-repo,imagemagick,wget,parallel,mas,figlet,nmap,pdfgrep,ocrmypdf,iftop,htop,mosh,pyenv,pandoc,jq,telnet,shellcheck,youtube-dl,watch,zsh,pipx,tree,fd,neovim,glow,tldr,deno
+    name: cloc,bun,fzf,gh,npm,nvm,go,trash,awscli,ack,hub,redis,ffmpeg,git-filter-repo,imagemagick,wget,parallel,mas,figlet,nmap,pdfgrep,ocrmypdf,iftop,htop,mosh,pyenv,pandoc,jq,telnet,shellcheck,youtube-dl,watch,zsh,pipx,tree,fd,neovim,glow,tldr,deno,llm
     state: present
 
 - name: Install Node with NVM
   shell: . $(brew --prefix nvm)/nvm.sh && nvm install node && nvm use node
-  become: yes
+  become: true
 
 - name: (Bun) Install Global Dependencies
   shell: bun add -g carbon-now-cli netlify-cli neovim cowsay
-  become: yes
+  become: true
 
 - name: Secure NPM
   shell: npm config set ignore-scripts true
-  become: yes
+  become: true
 
 - name: Install Homebrew - Apps
   community.general.homebrew_cask:
-    name: 1password,anki,arc,audacity,brave-browser,chromium,dash,dbeaver-community,discord,docker,dropbox,figma,freedom,firefox,github,google-chrome,google-earth-pro,imageoptim,iterm2,monodraw,kindle,notion,ngrok,obs,pocket,postman,postico,playdate-mirror,private-internet-access,rescuetime,slack,signal,sizzy,telegram,visual-studio-code,whatsapp,warp
+    name: 1password,anki,arc,audacity,chromium,dash,dbeaver-community,discord,docker,dropbox,figma,freedom,firefox,github,google-chrome,google-earth-pro,imageoptim,iterm2,monodraw,kindle,notion,ngrok,obs,pocket,postman,postico,playdate-mirror,private-internet-access,rescuetime,slack,signal,sizzy,telegram,visual-studio-code,whatsapp,warp
     state: present
-  ignore_errors: yes
+  ignore_errors: true
+
+- name: Install UV
+  shell: curl -LsSf https://astral.sh/uv/install.sh | sh
+  become: true
+
+- name: Install Python with UV
+  shell: uv install python
+  become: true
 
 - name: Install Deep Learning Tools
-  shell: pip install csvkit
-  become: yes
+  shell: uv pip install csvkit
+  become: true
 
 - name: Copy Gitconfig
   copy:
@@ -132,7 +140,7 @@
 
 - name: Install Cargo Deps
   shell: source $HOME/.cargo/env && cargo install ripgrep git-delta fd-find exa procs bottom tealdeer hyperfine du-dust grex sd
-  become: yes
+  become: true
 
 - name: Update TLDR Cache
   shell: tldr --update
