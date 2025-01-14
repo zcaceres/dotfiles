@@ -79,7 +79,7 @@
 
 - name: Install Homebrew - Apps
   community.general.homebrew_cask:
-    name: 1password,anki,arc,audacity,chromium,dash,dbeaver-community,discord,docker,dropbox,figma,freedom,firefox,github,google-chrome,google-earth-pro,imageoptim,iterm2,monodraw,kindle,notion,ngrok,obs,pocket,postman,postico,playdate-mirror,private-internet-access,rescuetime,slack,signal,sizzy,telegram,visual-studio-code,whatsapp,warp
+    name: 1password,anki,arc,audacity,claude,chromium,dash,dbeaver-community,discord,docker,dropbox,figma,freedom,firefox,github,google-chrome,google-earth-pro,imageoptim,iterm2,monodraw,kindle,notion,ngrok,obs,pocket,postman,postico,playdate-mirror,private-internet-access,rescuetime,slack,signal,sizzy,telegram,visual-studio-code,whatsapp,warp
     state: present
   ignore_errors: true
 
