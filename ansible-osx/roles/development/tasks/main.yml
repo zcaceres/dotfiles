@@ -147,3 +147,6 @@
 
 - name: Install browserslist
   shell: bunx browserslist && bunx update-browserslist-db@latest
+
+- name: Install LLM CLI Plugins
+  shell: llm plugins install llm-gemini && llm plugins install llm-claude && echo 'Use the llm keys set command to set API keys for your LLM providers'
