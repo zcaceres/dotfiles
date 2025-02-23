@@ -79,7 +79,7 @@
 
 - name: Install Homebrew - Apps
   community.general.homebrew_cask:
-    name: android-file-transfer,anki,arc,audacity,claude,chromium,dash,dbeaver-community,discord,docker,dropbox,figma,freedom,firefox,github,google-chrome,google-earth-pro,imageoptim,iterm2,monodraw,kindle,notion,ngrok,obs,obsidian,openoffice,pocket,postman,postico,playdate-mirror,private-internet-access,rescuetime,screen-studio,skype,slack,signal,sizzy,steam,telegram,visual-studio-code,whatsapp,warp
+    name: android-file-transfer,anki,arc,audacity,claude,chromium,dash,dbeaver-community,discord,docker,dropbox,figma,freedom,firefox,github,google-earth-pro,imageoptim,iterm2,monodraw,kindle,notion,ngrok,obs,obsidian,openoffice,pocket,postman,postico,playdate-mirror,private-internet-access,rescuetime,screen-studio,skype,slack,signal,sizzy,steam,telegram,visual-studio-code,whatsapp,warp
     state: present
   ignore_errors: true
 
