@@ -62,7 +62,7 @@
 
 - name: Homebrew Install Tools
   community.general.homebrew:
-    name: cloc,bun,fzf,gh,npm,nvm,go,trash,awscli,ack,hub,redis,ffmpeg,git-filter-repo,imagemagick,wget,parallel,mas,figlet,nmap,pdfgrep,ocrmypdf,iftop,htop,mosh,pyenv,pandoc,jq,telnet,shellcheck,youtube-dl,watch,zsh,pipx,tree,fd,neovim,glow,tldr,deno,llm
+    name: cloc,bun,fzf,gh,npm,nvm,go,trash,awscli,ack,hub,redis,ffmpeg,git-filter-repo,imagemagick,wget,parallel,mas,figlet,nmap,pdfgrep,ocrmypdf,iftop,htop,mosh,pyenv,pandoc,jq,telnet,shellcheck,youtube-dl,watch,zsh,pipx,tree,fd,neovim,glow,tldr,deno,llm,zen-browser
     state: present
 
 - name: Install Node with NVM
