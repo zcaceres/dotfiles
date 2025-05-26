@@ -62,7 +62,7 @@
 
 - name: Homebrew Install Tools
   community.general.homebrew:
-    name: cloc,bun,fzf,gh,npm,nvm,go,trash,awscli,ack,hub,redis,ffmpeg,git-filter-repo,imagemagick,wget,parallel,mas,figlet,nmap,pdfgrep,ocrmypdf,iftop,htop,mosh,pyenv,pandoc,jq,telnet,shellcheck,youtube-dl,watch,zsh,pipx,tree,fd,neovim,glow,tldr,deno,llm,zen-browser
+    name: cloc,bun,fzf,gh,npm,nvm,go,dua-clitrash,awscli,ack,hub,redis,ncspot,ffmpeg,git-filter-repo,imagemagick,wget,parallel,mas,figlet,nmap,pdfgrep,ocrmypdf,iftop,htop,mosh,pyenv,pandoc,jq,telnet,shellcheck,youtube-dl,watch,zsh,pipx,tree,fd,neovim,glow,tldr,deno,llm,zen-browser,jesseduffield/lazygit/lazygit,rga,tokei,mask,presenterm
     state: present
 
 - name: Install Node with NVM
@@ -139,7 +139,7 @@
   shell: cat ~/dotfiles/ansible-osx/roles/development/files/vscode/vs-code-extensions | xargs -I _ code --install-extension _
 
 - name: Install Cargo Deps
-  shell: source $HOME/.cargo/env && cargo install ripgrep git-delta fd-find exa procs bottom tealdeer hyperfine du-dust grex sd
+  shell: source $HOME/.cargo/env && cargo install ripgrep git-delta fd-find eza procs bottom tealdeer hyperfine du-dust grex sd xh zellij starship wiki-tui
   become: true
 
 - name: Update TLDR Cache

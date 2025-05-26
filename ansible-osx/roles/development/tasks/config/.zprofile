@@ -84,8 +84,8 @@ alias sourceme='. ~/.zprofile'
 # serve current directory on port 80
 alias servedir='python -m http.server 8080'
 alias c='clear'
-alias ls='exa'
-alias la='exa -la'
+alias ls='eza'
+alias la='eza -la'
 alias glog='git log'
 alias ...=../..
 alias ....=../../..

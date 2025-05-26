@@ -1,12 +1,12 @@
 - name: Install Tools - apt
   apt:
-    name: ack,bat,cloc,nodejs,npm,htop,iftop,tldr,locate,wget,xsel,trash-cli,zeal,ghostwriter,hunspell-en-us,ffmpeg,parallel,pyenv,glow,deno,llm
+    name: ack,bat,cloc,nodejs,npm,htop,iftop,tldr,locate,wget,xsel,trash-cli,zeal,ghostwriter,hunspell-en-us,ffmpeg,parallel,pyenv,glow,deno,llm,lazygit,ncspot,rga,tokei
 
 - name: Install Rust
   shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > /tmp/install_rust && /usr/bin/env bash /tmp/install_rust -y --no-modify-path && source $HOME/.cargo/env
 
 - name: Install Rust Tools
-  shell: cargo install ripgrep git-delta exa procs bottom tealdeer hyperfine du-dust grex sd fd-find
+  shell: cargo install ripgrep git-delta eza procs bottom tealdeer hyperfine du-dust grex sd fd-find xh zellij starship wiki-tui mask presenterm
 
 - name: Install Bun
   shell: curl -fsSL https://bun.sh/install | bash
