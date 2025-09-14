@@ -1,40 +1,147 @@
+- name: Update apt cache
+  apt:
+    update_cache: yes
+  become: true
+
 - name: Install Tools - apt
   apt:
-    name: ack,bat,cloc,nodejs,npm,htop,iftop,tldr,locate,wget,xsel,trash-cli,zeal,ghostwriter,hunspell-en-us,ffmpeg,parallel,pyenv,glow,deno,llm,lazygit,ncspot,rga,tokei
+    name: ack,bat,cloc,nodejs,npm,htop,iftop,tldr,locate,wget,xsel,trash-cli,ffmpeg,parallel,git-lfs,jq,shellcheck,nmap,pdfgrep,telnet,tree,fd-find,neovim,pandoc,imagemagick,git-filter-repo,mosh,cmake,curl,redis,postgresql,gifsicle,pngquant,vnstat,mkcert,gh,fzf,ripgrep,tig,helix
+  become: true
 
 - name: Install Rust
-  shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > /tmp/install_rust && /usr/bin/env bash /tmp/install_rust -y --no-modify-path && source $HOME/.cargo/env
+  shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > /tmp/install_rust && /usr/bin/env bash /tmp/install_rust -y --no-modify-path
+  args:
+    creates: $HOME/.cargo/bin/rustc
 
-- name: Install Rust Tools
-  shell: cargo install ripgrep git-delta eza procs bottom tealdeer hyperfine du-dust grex sd fd-find xh zellij starship wiki-tui mask presenterm
+- name: Install UV (Python Package Manager)
+  shell: curl -LsSf https://astral.sh/uv/install.sh | sh
+  args:
+    creates: $HOME/.local/bin/uv
 
 - name: Install Bun
   shell: curl -fsSL https://bun.sh/install | bash
+  args:
+    creates: $HOME/.bun/bin/bun
+
+- name: Install pnpm
+  shell: curl -fsSL https://get.pnpm.io/install.sh | sh -
+  args:
+    creates: $HOME/.local/share/pnpm/pnpm
 
 - name: Install nvm
-  shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash export NVM_DIR="$HOME/.config/nvm" [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+  shell: |
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  args:
+    creates: $HOME/.nvm/nvm.sh
 
-- name: Install NodeJS
-  shell: nvm install node && nvm use node
+- name: Install NodeJS with nvm
+  shell: |
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    nvm install node && nvm use node
+  args:
+    creates: $HOME/.nvm/versions/node
 
-- name: Bun global packages
-  shell: bun install -g carbon-now-cli netlify-cli neovim
+- name: Install Python with UV
+  shell: $HOME/.local/bin/uv python install
+  args:
+    creates: $HOME/.local/share/uv/python
 
-- name: pyenv Python install
-  shell: pyenv install 3.11
+- name: Install Python CLI Tools with UV
+  shell: |
+    $HOME/.local/bin/uv tool install poetry
+    $HOME/.local/bin/uv tool install csvkit
+    $HOME/.local/bin/uv tool install subdominator
+    $HOME/.local/bin/uv tool install wappalyzer
 
-- name: install uv
-  shell: curl -LsSf https://astral.sh/uv/install.sh | sh
+- name: (Bun) Install Global Dependencies
+  shell: $HOME/.bun/bin/bun add -g carbon-now-cli cowsay @anthropic-ai/claude-code @google/gemini-cli
+
+- name: (PNPM) Install Global Dependencies
+  shell: $HOME/.local/share/pnpm/pnpm add -g netlify-cli
+
+- name: Install Cargo Dependencies
+  shell: |
+    source $HOME/.cargo/env
+    cargo install ripgrep git-delta eza procs bottom tealdeer hyperfine du-dust grex sd fd-find xh zellij starship bat
+
+- name: Install Deno
+  shell: curl -fsSL https://deno.land/x/install/install.sh | sh
+  args:
+    creates: $HOME/.deno/bin/deno
+
+- name: Install LLM CLI
+  shell: |
+    $HOME/.local/bin/uv tool install llm
+    $HOME/.local/bin/uvx llm install llm-gemini
+    $HOME/.local/bin/uvx llm install llm-claude
+    echo 'Use the llm keys set command to set API keys for your LLM providers'
+
+- name: Install lazygit
+  shell: |
+    LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+    curl -Lo /tmp/lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+    tar xf /tmp/lazygit.tar.gz -C /tmp lazygit
+    sudo install /tmp/lazygit /usr/local/bin
+  args:
+    creates: /usr/local/bin/lazygit
+
+- name: Install glow
+  shell: |
+    GLOW_VERSION=$(curl -s "https://api.github.com/repos/charmbracelet/glow/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+    curl -Lo /tmp/glow.deb "https://github.com/charmbracelet/glow/releases/latest/download/glow_${GLOW_VERSION}_amd64.deb"
+    sudo dpkg -i /tmp/glow.deb
+  args:
+    creates: /usr/bin/glow
+
+- name: Install tokei
+  shell: |
+    TOKEI_VERSION=$(curl -s "https://api.github.com/repos/XAMPPRocky/tokei/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+    curl -Lo /tmp/tokei.tar.gz "https://github.com/XAMPPRocky/tokei/releases/latest/download/tokei-x86_64-unknown-linux-gnu.tar.gz"
+    tar xf /tmp/tokei.tar.gz -C /tmp
+    sudo install /tmp/tokei /usr/local/bin
+  args:
+    creates: /usr/local/bin/tokei
 
 - name: Copy Deep Work Hosts File
   copy:
     src: ./hosts
     dest: /etc/hosts
+  become: true
 
-- name: Copy Aliases
+- name: Copy Bash Aliases
   copy:
-    src: ./.bash-aliases
-    dest: ~/.bash-aliases
+    src: ./.bash_aliases
+    dest: ~/.bash_aliases
+
+- name: Copy Gitconfig
+  copy:
+    src: ../../../config/.gitconfig
+    dest: ~/.gitconfig
+
+- name: Copy Global Gitignore
+  copy:
+    src: ../../../config/.gitignore_global
+    dest: ~/.gitignore_global
+
+- name: Copy .vimrc
+  copy:
+    src: ../../../config/.vimrc
+    dest: ~/.vimrc
+
+- name: Copy .zshrc (if using zsh)
+  copy:
+    src: ../../../config/.zshrc
+    dest: ~/.zshrc
+  ignore_errors: true
+
+- name: Copy .zprofile (if using zsh)
+  copy:
+    src: ../../../config/.zprofile
+    dest: ~/.zprofile
+  ignore_errors: true
 
 - name: Typescript Syntax for Vim
   git:
@@ -42,23 +149,63 @@
     dest: ~/.vim/pack/typescript/start/typescript-vim
     update: no
 
-- name: Install PIA
-  shell: echo 'https://www.privateinternetaccess.com/pages/changelog'
-
-- name: Install VSCode
-  shell: echo 'https://code.visualstudio.com/docs/setup/linux'
-
-- name: Show Node Version
-  shell: node -v
-
-- name: VSCode Config
-  shell: Echo 'Copy VSCode config files to wherever the directory is'
-
 - name: Secure NPM
   shell: npm config set ignore-scripts true
 
-- name: Install pip tools
-  shell: uv pip install csvkit
-
 - name: Update TLDR Cache
   shell: tldr --update
+
+- name: Install browserslist
+  shell: $HOME/.bun/bin/bunx browserslist && $HOME/.bun/bin/bunx update-browserslist-db@latest
+
+- name: Copy VSCode Settings
+  copy:
+    src: ../../../files/vscode/settings.json
+    dest: ~/.config/Code/User/settings.json
+  ignore_errors: true
+
+- name: Copy VSCode Keybindings
+  copy:
+    src: ../../../files/vscode/keybindings.json
+    dest: ~/.config/Code/User/keybindings.json
+  ignore_errors: true
+
+- name: Install VSCode Extensions
+  shell: |
+    if [ -f ~/dotfiles/ansible-osx/roles/development/files/vscode/vs-code-extensions ]; then
+      cat ~/dotfiles/ansible-osx/roles/development/files/vscode/vs-code-extensions | xargs -I _ code --install-extension _
+    fi
+  ignore_errors: true
+
+- name: Install Snap Packages
+  snap:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - discord
+    - slack
+    - signal-desktop
+    - telegram-desktop
+    - postman
+    - obsidian
+    - spotify
+  become: true
+  ignore_errors: true
+
+- name: Install Private Internet Access
+  shell: |
+    echo "Download PIA from: https://www.privateinternetaccess.com/download/linux-vpn"
+    echo "Or install via command:"
+    echo "wget -qO- https://installers.privateinternetaccess.com/download/pia-linux-3.3.1-06924.run | sudo bash"
+- name: Show Installation Summary
+  debug:
+    msg: |
+      Installation complete!
+      - Node version: Run 'node -v' to verify
+      - Python tools: Run 'uv tool list' to see installed tools
+      - Cargo tools: Run 'cargo install --list' to see installed tools
+      - Restart your shell to load all configurations
+      - For GUI apps, check Snap Store or Flatpak
+      - Manual installations needed:
+        * Private Internet Access VPN
+        * Docker Desktop (optional, Docker CLI is installed)

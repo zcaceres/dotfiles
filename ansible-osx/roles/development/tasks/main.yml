@@ -57,12 +57,15 @@
 - name: Install Rust
   shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > /tmp/install_rust && /usr/bin/env bash /tmp/install_rust -y --no-modify-path
 
+- name: Install UV (Python Package Manager)
+  shell: curl -LsSf https://astral.sh/uv/install.sh | sh
+
 - name: Install Bun runtime
   shell: brew tap oven-sh/bun
 
 - name: Homebrew Install Tools
   community.general.homebrew:
-    name: cloc,bun,fzf,gh,npm,nvm,go,dua-clitrash,awscli,ack,hub,redis,ncspot,ffmpeg,git-filter-repo,imagemagick,wget,parallel,mas,figlet,nmap,pdfgrep,ocrmypdf,iftop,htop,mosh,pyenv,pandoc,jq,telnet,shellcheck,youtube-dl,watch,zsh,pipx,tree,fd,neovim,glow,tldr,deno,llm,zen-browser,jesseduffield/lazygit/lazygit,rga,tokei,mask,presenterm
+    name: cloc,bun,fzf,gh,npm,nvm,go,dua-cli,trash,awscli,ack,hub,redis,ncspot,ffmpeg,git-filter-repo,imagemagick,wget,parallel,mas,figlet,nmap,pdfgrep,ocrmypdf,iftop,htop,mosh,pyenv,pandoc,jq,telnet,shellcheck,yt-dlp,watch,zsh,tree,fd,neovim,glow,tldr,deno,llm,lazygit,ripgrep-all,tokei,helix,tig,git-lfs,pnpm,vercel-cli,stripe,codex,gifsicle,gemini-cli
     state: present
 
 - name: Install Node with NVM
@@ -70,7 +73,7 @@
   become: true
 
 - name: (Bun) Install Global Dependencies
-  shell: bun add -g carbon-now-cli netlify-cli neovim cowsay
+  shell: bun add -g carbon-now-cli cowsay @anthropic-ai/claude-code
   become: true
 
 - name: Secure NPM
@@ -79,20 +82,16 @@
 
 - name: Install Homebrew - Apps
   community.general.homebrew_cask:
-    name: android-file-transfer,anki,arc,audacity,claude,chromium,dash,dbeaver-community,discord,docker,dropbox,figma,freedom,firefox,github,google-earth-pro,imageoptim,iterm2,monodraw,kindle,notion,ngrok,obs,obsidian,openoffice,pocket,postman,postico,playdate-mirror,private-internet-access,rescuetime,screen-studio,skype,slack,signal,sizzy,steam,telegram,visual-studio-code,whatsapp,warp
+    name: 1password,android-file-transfer,anki,audacity,brave-browser,chromium,dash,dbeaver-community,discord,docker,docker-desktop,dropbox,figma,freedom,firefox,ghostty,github,gcloud-cli,google-earth-pro,imageoptim,iterm2,monodraw,notion,ngrok,obs,obsidian,ollama,openoffice,postman,postico,playdate-mirror,private-internet-access,screen-studio,slack,sizzy,steam,telegram,visual-studio-code,whatsapp,zed
     state: present
   ignore_errors: true
 
-- name: Install UV
-  shell: curl -LsSf https://astral.sh/uv/install.sh | sh
-  become: true
-
 - name: Install Python with UV
-  shell: uv install python
+  shell: uv python install
   become: true
 
-- name: Install Deep Learning Tools
-  shell: uv pip install csvkit
+- name: Install Python CLI Tools with UV
+  shell: uv tool install poetry && uv tool install subdominator && uv tool install wappalyzer && uv tool install csvkit
   become: true
 
 - name: Copy Gitconfig
@@ -139,7 +138,7 @@
   shell: cat ~/dotfiles/ansible-osx/roles/development/files/vscode/vs-code-extensions | xargs -I _ code --install-extension _
 
 - name: Install Cargo Deps
-  shell: source $HOME/.cargo/env && cargo install ripgrep git-delta fd-find eza procs bottom tealdeer hyperfine du-dust grex sd xh zellij starship wiki-tui
+  shell: source $HOME/.cargo/env && cargo install ripgrep git-delta fd-find eza procs bottom tealdeer hyperfine du-dust grex sd xh zellij starship bat
   become: true
 
 - name: Update TLDR Cache
