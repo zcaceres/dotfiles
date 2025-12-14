@@ -65,7 +65,7 @@
 - name: Install Cargo Dependencies
   shell: |
     source $HOME/.cargo/env
-    cargo install ripgrep git-delta eza procs bottom tealdeer hyperfine du-dust grex sd fd-find xh zellij starship bat
+    cargo install ripgrep git-delta eza procs bottom tealdeer hyperfine du-dust grex sd fd-find xh zellij starship bat zoxide dua-cli ripgrep-all just mask
 
 - name: Install Deno
   shell: curl -fsSL https://deno.land/x/install/install.sh | sh
@@ -104,6 +104,23 @@
     sudo install /tmp/tokei /usr/local/bin
   args:
     creates: /usr/local/bin/tokei
+
+- name: Install yazi
+  shell: |
+    YAZI_VERSION=$(curl -s "https://api.github.com/repos/sxyazi/yazi/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+    curl -Lo /tmp/yazi.zip "https://github.com/sxyazi/yazi/releases/latest/download/yazi-x86_64-unknown-linux-gnu.zip"
+    unzip -o /tmp/yazi.zip -d /tmp
+    sudo install /tmp/yazi-x86_64-unknown-linux-gnu/yazi /usr/local/bin
+  args:
+    creates: /usr/local/bin/yazi
+
+- name: Install presenterm
+  shell: |
+    PRESENTERM_VERSION=$(curl -s "https://api.github.com/repos/mfontanini/presenterm/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+    curl -Lo /tmp/presenterm "https://github.com/mfontanini/presenterm/releases/latest/download/presenterm-x86_64-unknown-linux-gnu"
+    sudo install /tmp/presenterm /usr/local/bin
+  args:
+    creates: /usr/local/bin/presenterm
 
 - name: Copy Deep Work Hosts File
   copy:

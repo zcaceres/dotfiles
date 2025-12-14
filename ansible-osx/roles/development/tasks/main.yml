@@ -65,7 +65,7 @@
 
 - name: Homebrew Install Tools
   community.general.homebrew:
-    name: cloc,bun,fzf,gh,npm,nvm,go,dua-cli,trash,awscli,ack,hub,redis,ncspot,ffmpeg,git-filter-repo,imagemagick,wget,parallel,mas,figlet,nmap,pdfgrep,ocrmypdf,iftop,htop,mosh,pyenv,pandoc,jq,telnet,shellcheck,yt-dlp,watch,zsh,tree,fd,neovim,glow,tldr,deno,llm,lazygit,ripgrep-all,tokei,helix,tig,git-lfs,pnpm,vercel-cli,stripe,codex,gifsicle,gemini-cli
+    name: cloc,bun,fzf,gh,npm,nvm,dua-cli,trash,awscli,ack,hub,redis,spotify_player,ffmpeg,git-filter-repo,imagemagick,wget,parallel,mas,figlet,nmap,pdfgrep,ocrmypdf,iftop,htop,mosh,pandoc,jq,telnet,shellcheck,yt-dlp,watch,zsh,tree,fd,neovim,glow,tldr,deno,llm,lazygit,ripgrep,ripgrep-all,tokei,helix,tig,git-lfs,pnpm,stripe,codex,gifsicle,gemini-cli,zoxide,yazi,just,mask,presenterm,cmake,mkcert,postgresql,tesseract,volta,yarn,zellij
     state: present
 
 - name: Install Node with NVM
@@ -73,16 +73,17 @@
   become: true
 
 - name: (Bun) Install Global Dependencies
-  shell: bun add -g carbon-now-cli cowsay @anthropic-ai/claude-code
+  shell: bun add -g carbon-now-cli cowsay @anthropic-ai/claude-code @google/gemini-cli
   become: true
 
 - name: Secure NPM
   shell: npm config set ignore-scripts true
   become: true
 
+# NOTE: Install Signal manually from https://signal.org/download/
 - name: Install Homebrew - Apps
   community.general.homebrew_cask:
-    name: 1password,android-file-transfer,anki,audacity,brave-browser,chromium,dash,dbeaver-community,discord,docker,docker-desktop,dropbox,figma,freedom,firefox,ghostty,github,gcloud-cli,google-earth-pro,imageoptim,iterm2,monodraw,notion,ngrok,obs,obsidian,ollama,openoffice,postman,postico,playdate-mirror,private-internet-access,screen-studio,slack,sizzy,steam,telegram,visual-studio-code,whatsapp,zed
+    name: 1password,android-file-transfer,anki,audacity,brave-browser,chromium,dash,discord,figma,freedom,firefox,ghostty,github,gcloud-cli,google-chrome,google-earth-pro,imageoptim,iterm2,monodraw,notion,ngrok,obs,obsidian,ollama,openoffice,postman,postico,playdate-mirror,private-internet-access,screen-studio,slack,sizzy,steam,superhuman,telegram,warp,whatsapp,zed,spotify,arc,linear,tableplus,shottr,cap,superwhisper,claude
     state: present
   ignore_errors: true
 
@@ -124,18 +125,20 @@
     src: "./zed/settings.json"
     dest: "~/.config/zed/settings.json"
 
-- name: Copy VSCode Prefs Part I
-  copy:
-    src: ./files/vscode/keybindings.json
-    dest: $HOME/Library/Application\ Support/Code/User/keybindings.json
-
-- name: Copy VSCode Prefs Part II
-  copy:
-    src: ./files/vscode/settings.json
-    dest: $HOME/Library/Application\ Support/Code/User/settings.json
-
-- name: Install VSCode Extensions
-  shell: cat ~/dotfiles/ansible-osx/roles/development/files/vscode/vs-code-extensions | xargs -I _ code --install-extension _
+# VSCode tasks removed - using Zed as primary editor
+# If you need VSCode, uncomment below:
+# - name: Copy VSCode Prefs Part I
+#   copy:
+#     src: ./files/vscode/keybindings.json
+#     dest: $HOME/Library/Application\ Support/Code/User/keybindings.json
+#
+# - name: Copy VSCode Prefs Part II
+#   copy:
+#     src: ./files/vscode/settings.json
+#     dest: $HOME/Library/Application\ Support/Code/User/settings.json
+#
+# - name: Install VSCode Extensions
+#   shell: cat ~/dotfiles/ansible-osx/roles/development/files/vscode/vs-code-extensions | xargs -I _ code --install-extension _
 
 - name: Install Cargo Deps
   shell: source $HOME/.cargo/env && cargo install ripgrep git-delta fd-find eza procs bottom tealdeer hyperfine du-dust grex sd xh zellij starship bat

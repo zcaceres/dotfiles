@@ -7,13 +7,40 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "assistant": {
-    "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-20240620-fast-edit"
+  "icon_theme": "Catppuccin Mocha",
+  "bottom_dock_layout": "contained",
+  "show_edit_predictions": true,
+  "show_completions_on_input": false,
+  "agent": {
+    "use_modifier_to_send": false,
+    "always_allow_tool_actions": true,
+    "profiles": {
+      "context-agent": {
+        "name": "Context Agent",
+        "tools": {},
+        "enable_all_context_servers": false,
+        "context_servers": {}
+      }
     },
-    "version": "2"
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-4.1"
+    },
+    "default_profile": "ask",
+    "default_model": {
+      "provider": "ollama",
+      "model": "gemma3:latest"
+    },
+    "language_models": {
+      "zed.dev": {
+        "low_speed_timeout_in_seconds": 60
+      },
+      "anthropic": {
+        "low_speed_timeout_in_seconds": 60
+      }
+    }
   },
+  "ui_font_size": 18,
   "languages": {
     "TypeScript": {
       "copilot": "on"
@@ -31,14 +58,27 @@
       "copilot": "on"
     }
   },
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
   "soft_wrap": "editor_width",
   "base_keymap": "VSCode",
-  "theme": "Solarized Dark",
-  "buffer_font_size": 15,
+  "theme": "Catppuccin Mocha",
+  "buffer_font_size": 19.0,
   "cursor_blink": true,
   "scrollbar": {
     "show": "auto"
   },
+  "file_scan_exclusions": [
+    "**/.svn",
+    "**/.hg",
+    "**/.jj",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings"
+  ],
   "slash_commands": {
     "docs": {
       "enabled": true
@@ -52,4 +92,15 @@
       "delay_ms": 1000
     }
   }
+  // NOTE: Context servers with API keys should be configured manually after setup
+  // Example for Context7:
+  // "context_servers": {
+  //   "mcp-server-context7": {
+  //     "source": "extension",
+  //     "enabled": true,
+  //     "settings": {
+  //       "context7_api_key": "YOUR_API_KEY"
+  //     }
+  //   }
+  // }
 }
