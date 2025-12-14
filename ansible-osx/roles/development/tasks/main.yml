@@ -83,7 +83,7 @@
 # NOTE: Install Signal manually from https://signal.org/download/
 - name: Install Homebrew - Apps
   community.general.homebrew_cask:
-    name: 1password,android-file-transfer,anki,audacity,brave-browser,chromium,dash,discord,figma,freedom,firefox,ghostty,github,gcloud-cli,google-chrome,google-earth-pro,imageoptim,iterm2,monodraw,notion,ngrok,obs,obsidian,ollama,openoffice,postman,postico,playdate-mirror,private-internet-access,screen-studio,slack,sizzy,steam,superhuman,telegram,warp,whatsapp,zed,spotify,arc,linear,tableplus,shottr,cap,superwhisper,claude
+    name: 1password,android-file-transfer,anki,audacity,brave-browser,chromium,dash,discord,figma,freedom,firefox,ghostty,github,gcloud-cli,google-chrome,google-earth-pro,imageoptim,iterm2,monodraw,notion,ngrok,obs,obsidian,ollama,openoffice,postman,postico,playdate-mirror,private-internet-access,screen-studio,slack,sizzy,steam,superhuman,telegram,warp,whatsapp,zed,spotify,arc,linear-linear,tableplus,shottr,cap,superwhisper,claude,zoom,messenger,zen,kindle,microsoft-outlook,adobe-creative-cloud
     state: present
   ignore_errors: true
 
@@ -152,3 +152,43 @@
 
 - name: Install LLM CLI Plugins
   shell: llm plugins install llm-gemini && llm plugins install llm-claude && echo 'Use the llm keys set command to set API keys for your LLM providers'
+
+# Claude Code Configuration
+- name: Clone claude-config repository
+  git:
+    repo: https://github.com/zachcaceres/claude-config.git
+    dest: ~/claude-config
+    update: yes
+  ignore_errors: true
+
+- name: Create ~/.claude directory
+  file:
+    path: ~/.claude
+    state: directory
+    mode: '0755'
+
+- name: Copy machine-specific Claude settings
+  copy:
+    src: ./claude/settings.local.json
+    dest: ~/.claude/settings.local.json
+
+- name: Copy Claude skills from claude-config
+  copy:
+    src: ~/claude-config/skills/
+    dest: ~/.claude/skills/
+    remote_src: yes
+  ignore_errors: true
+
+- name: Copy Claude commands from claude-config
+  copy:
+    src: ~/claude-config/commands/
+    dest: ~/.claude/commands/
+    remote_src: yes
+  ignore_errors: true
+
+- name: Copy Claude settings from claude-config
+  copy:
+    src: ~/claude-config/settings.json
+    dest: ~/.claude/settings.json
+    remote_src: yes
+  ignore_errors: true
