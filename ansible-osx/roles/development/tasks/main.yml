@@ -65,7 +65,7 @@
 
 - name: Homebrew Install Tools
   community.general.homebrew:
-    name: cloc,bun,fzf,gh,npm,nvm,dua-cli,trash,awscli,ack,hub,redis,spotify_player,ffmpeg,git-filter-repo,imagemagick,wget,parallel,mas,figlet,nmap,pdfgrep,ocrmypdf,iftop,htop,mosh,pandoc,jq,telnet,shellcheck,yt-dlp,watch,zsh,tree,fd,neovim,glow,tldr,deno,llm,lazygit,ripgrep,ripgrep-all,tokei,helix,tig,git-lfs,pnpm,stripe,codex,gifsicle,gemini-cli,zoxide,yazi,just,mask,presenterm,cmake,mkcert,postgresql,tesseract,volta,yarn,zellij
+    name: cloc,bun,fzf,gh,npm,nvm,dua-cli,trash,awscli,ack,hub,redis,spotify_player,ffmpeg,git-filter-repo,imagemagick,wget,parallel,mas,figlet,nmap,pdfgrep,ocrmypdf,iftop,htop,mosh,pandoc,jq,telnet,shellcheck,yt-dlp,watch,zsh,tree,fd,neovim,glow,tldr,deno,llm,lazygit,ripgrep,ripgrep-all,tokei,helix,tig,git-lfs,pnpm,stripe,codex,gifsicle,gemini-cli,zoxide,yazi,just,mask,presenterm,cmake,mkcert,postgresql,tesseract,volta,yarn,zellij,gitleaks
     state: present
 
 - name: Install Node with NVM
@@ -104,6 +104,12 @@
   copy:
     src: ./config/.gitignore_global
     dest: ~/.gitignore_global
+
+- name: Copy Git Hooks Templates
+  copy:
+    src: ./config/git-templates/
+    dest: ~/.git-templates/
+    mode: '0755'
 
 - name: Copy .vimrc
   copy:

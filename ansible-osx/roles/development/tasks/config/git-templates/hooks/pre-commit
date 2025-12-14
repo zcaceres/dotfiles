@@ -1,0 +1,21 @@
+#!/bin/bash
+# Global git pre-commit hook - scans for secrets using gitleaks
+
+# Check if gitleaks is installed
+if ! command -v gitleaks &> /dev/null; then
+    echo "Warning: gitleaks not installed, skipping secrets scan"
+    exit 0
+fi
+
+# Run gitleaks on staged changes
+gitleaks protect --staged --no-banner
+
+if [ $? -ne 0 ]; then
+    echo ""
+    echo "⚠️  Secrets detected in staged changes!"
+    echo "Review the findings above and remove sensitive data before committing."
+    echo ""
+    echo "To bypass this check (use with caution):"
+    echo "  git commit --no-verify"
+    exit 1
+fi

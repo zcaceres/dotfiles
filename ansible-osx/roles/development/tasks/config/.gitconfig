@@ -33,3 +33,4 @@ required = true
 rebase = true
 [init]
 defaultBranch = main
+templateDir = ~/.git-templates
