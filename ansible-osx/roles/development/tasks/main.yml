@@ -50,6 +50,52 @@
     value: 1
     state: present
 
+# Dock Settings
+- name: Enable Dock Autohide
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: autohide
+    type: bool
+    value: true
+    state: present
+
+- name: Set Dock Tile Size
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: tilesize
+    type: int
+    value: 35
+    state: present
+
+- name: Disable Dock Magnification
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: magnification
+    type: bool
+    value: false
+    state: present
+
+# Trackpad Settings
+- name: Disable Natural Scroll Direction
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: com.apple.swipescrolldirection
+    type: bool
+    value: false
+    state: present
+
+- name: Enable Trackpad Force Click
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: com.apple.trackpad.forceClick
+    type: bool
+    value: true
+    state: present
+
+- name: Restart Dock to Apply Settings
+  shell: killall Dock
+  ignore_errors: true
+
 - name: Install XCode
   shell: xcode-select --install
   ignore_errors: true
@@ -197,4 +243,35 @@
     src: ~/claude-config/settings.json
     dest: ~/.claude/settings.json
     remote_src: yes
+  ignore_errors: true
+
+- name: Create Claude scripts directory
+  file:
+    path: ~/.claude/scripts
+    state: directory
+    mode: '0755'
+
+- name: Copy Claude planning scripts
+  copy:
+    src: ./claude/scripts/
+    dest: ~/.claude/scripts/
+    mode: '0755'
+
+# Launch Agents for Claude automations
+- name: Copy Claude morning planning launch agent
+  copy:
+    src: ./launchagents/com.claude.morning-planning.plist
+    dest: ~/Library/LaunchAgents/com.claude.morning-planning.plist
+
+- name: Copy Claude evening planning launch agent
+  copy:
+    src: ./launchagents/com.claude.evening-planning.plist
+    dest: ~/Library/LaunchAgents/com.claude.evening-planning.plist
+
+- name: Load Claude morning planning agent
+  shell: launchctl load ~/Library/LaunchAgents/com.claude.morning-planning.plist
+  ignore_errors: true
+
+- name: Load Claude evening planning agent
+  shell: launchctl load ~/Library/LaunchAgents/com.claude.evening-planning.plist
   ignore_errors: true
