@@ -1,3 +1,86 @@
+copy_to_clipboard() {
+    local file_name=$1
+    if command -v pbcopy &> /dev/null; then
+        cat "$file_name" | pbcopy
+    elif command -v xclip &> /dev/null; then
+        cat "$file_name" | xclip -selection clipboard
+    elif command -v clip &> /dev/null; then
+        cat "$file_name" | clip
+    elif command -v wl-copy &> /dev/null; then
+        cat "$file_name" | wl-copy
+    else
+        echo "Clipboard tool not found, couldn't save $file_name"
+    fi
+}
+
+copy_diff() {
+    local file_name=$1
+    local exclusions=()
+
+    # List of lock files to potentially exclude
+    local lock_files=(
+        "package-lock.json" "yarn.lock" "pnpm-lock.yaml" "composer.lock"
+        "Gemfile.lock" "Cargo.lock" "Pipfile.lock" "poetry.lock"
+        "packages.lock.json" "go.sum" "build.sbt.lock" "mix.lock"
+        "pubspec.lock" "Package.resolved" "cabal.project.freeze" "deps.edn"
+        "rebar.lock" "opam.locked" "gradle.lockfile"
+    )
+
+    # Build exclusion list based on existing files
+    for lock_file in "${lock_files[@]}"; do
+        if git ls-files "$lock_file" --error-unmatch &> /dev/null; then
+            exclusions+=("':!$lock_file'")
+        fi
+    done
+
+    # Construct and execute the git diff command
+    if [ ${#exclusions[@]} -eq 0 ]; then
+        git diff --cached > "$file_name"
+    else
+        eval "git diff --cached ${exclusions[*]}" > "$file_name"
+    fi
+
+    if [ -s "$file_name" ]; then
+        echo "Generating commit message..."
+    else
+        echo "No changes detected. Please stage some files before using magic_diff."
+        rm "$file_name"  # Clean up the empty diff file
+    fi
+}
+
+magic_diff() {
+    local timestamp=$(date +"%Y%m%d_%H%M%S")
+    local diff_file_name=$(mktemp /tmp/magic_diff_staged_diff.$timestamp.txt)
+    local commit_file_name=$(mktemp /tmp/magic_diff_commit.$timestamp.txt)
+    copy_diff $diff_file_name
+
+    if [ -f "$diff_file_name" ]; then
+        diff_content=$(<"$diff_file_name")
+
+        # Check llm command existence
+        if ! command -v llm &> /dev/null; then
+            echo "llm command not found. Please ensure it's installed and in your PATH."
+        fi
+
+        llm "Generate a git commit message based on the following diff. Do NOT include any backticks (\`) or quotation marks of any kind because that will BREAK the message. DO NOT INCLUDE BACKTICK OR QUOTATION MARK CHARACTERS. You can use formatting like lists if needed. Do NOT say comments like 'here is a commit message'. Do not include the diff in your commit message. Just write the commit message based on this diff: $diff_content" > "$commit_file_name"
+
+        # Replace backticks with single quotes in the commit file. Models often include backticks and this breaks the git commit message.
+        sed -i.bak "s/\`/'/g" "$commit_file_name" && rm "${commit_file_name}.bak"
+
+        copy_to_clipboard "$commit_file_name"
+        echo "Message copied to clipboard"
+
+        rm "$diff_file_name"
+
+        if [ -f "$commit_file_name" ]; then
+            rm "$commit_file_name"
+        fi
+    else
+        echo "Failed to create or find diff file."
+    fi
+}
+
+
 git_diff() {
     # with credit to Chong-U Lim
     local file_name=${1:-staged_diff.txt}
@@ -84,6 +167,10 @@ alias sourceme='. ~/.zprofile'
 # serve current directory on port 80
 alias servedir='python -m http.server 8080'
 alias c='clear'
+
+# Cargo (needed before eza alias)
+export PATH="$HOME/.cargo/bin:$PATH"
+
 alias ls='eza'
 alias la='eza -la'
 alias glog='git log'
@@ -152,6 +239,7 @@ alias gupav='git pull --rebase --autostash -v'
 alias v='vi'
 alias b='bun'
 alias copilot='gh copilot'
+alias spot='ncspot'
 
 copilot_what-the-shell() {
   TMPFILE=$(mktemp)
@@ -204,10 +292,8 @@ copilot_gh-assist() {
 }
 alias 'gh?'='copilot_gh-assist'
 alias 'wts'='copilot_what-the-shell'
+alias 'md'='magic_diff'
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-export SERP_API_KEY='KEY HERE'
-export OPENAI_API_KEY="KEY HERE"
-export ANTHROPIC_API_KEY="KEY HERE"
-export BRAVE_API_KEY="KEY HERE"
+
